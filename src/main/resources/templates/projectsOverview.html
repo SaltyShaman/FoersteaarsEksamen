@@ -18,7 +18,7 @@
             <thead class="table-dark">
             <tr>
                 <th>Client Company</th>
-                <th>Client Contact</th>
+                <th>Client email</th>
                 <th>Project Name</th>
                 <th>Project Leader</th>
                 <th>Go To</th>
@@ -29,7 +29,7 @@
             <!-- Thymeleaf loop to dynamicly loop has to be reconfigured -->
             <tr th:each="project : ${projects}">
                 <td th:text="${project.clientCompany}">Client Placeholder</td>
-                <td th:text="${project.clientContact}">Contact Placeholder</td>
+                <td th:text="${project.clientEmail}">Contact Placeholder email</td>
                 <td th:text="${project.projectName}">Project Placeholder</td>
                 <td th:text="${project.projectLeader}">Leader Placeholder</td>
                 <td>
