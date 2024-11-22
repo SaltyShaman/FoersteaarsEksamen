@@ -1,18 +1,18 @@
 package org.example.foersteaarseksamen.models;
 
 public class Client {
-    private long ID;
+    private long clientID;
     private String clientName;
     private String clientEmail;
 
-    public Client(long ID, String clientName, String clientEmail) {
-        this.ID = ID;
+    public Client(long clientID, String clientName, String clientEmail) {
+        this.clientID = clientID;
         this.clientName = clientName;
         this.clientEmail = clientEmail;
     }
 
-    public long getID() {
-        return ID;
+    public long getClientID() {
+        return clientID;
     }
 
     public String getClientName() {
@@ -23,8 +23,8 @@ public class Client {
         return clientEmail;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setClientID(long clientID) {
+        this.clientID = clientID;
     }
 
     public void setClientName(String clientName) {
