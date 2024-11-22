@@ -35,6 +35,13 @@ public class Client {
         this.clientEmail = clientEmail;
     }
 
-    //might need to string method similar to User in wishlist
+    @Override
+    public String toString() {
+        return "Client{" +
+                "clientID=" + clientID +
+                ", clientName='" + clientName + '\'' +
+                ", clientEmail='" + clientEmail + '\'' +
+                '}';
+    }
 }
 

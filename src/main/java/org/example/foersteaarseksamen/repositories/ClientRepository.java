@@ -21,18 +21,20 @@ public class ClientRepository {
     }
 
     public void addClient(Client client) throws SQLException {
-
+        String query = "INSERT INTO client (client_company, client_email) VALUES (?, ?)";
+        jdbcTemplate.update(client);
     }
 
     public void removeClient(long clientID ) throws SQLException {
-
+        Connection conn = connect();
     }
 
     public void updateClient(Client client) throws SQLException {
-
+        Connection conn = connect();
     }
     public Client readClient(String clientName, String clientEmail) throws SQLException {
         Client client = null;
+        Connection conn = connect();
 
         return client;
     }
