@@ -1,6 +1,6 @@
 package org.example.foersteaarseksamen.models;
 
-public class Projects{
+public class HighlightedProjects {
 
     private String projectName;
     private String projectLeader;
