@@ -1,7 +1,7 @@
 package org.example.foersteaarseksamen.repositories;
 
-
 import org.example.foersteaarseksamen.models.Client;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -15,26 +15,32 @@ public class ClientRepository {
     private String user = System.getenv("username");
     private String password = System.getenv("password");
 
+    private JdbcTemplate template;
+
+    public ClientRepository(JdbcTemplate template) {
+        this.template = template;
+    }
+
     // Establishing the database connection
     private Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
 
-    public void addClient(Client client) throws SQLException {
+    public void addClient(String clientName, String clientEmail ){
         String query = "INSERT INTO client (client_company, client_email) VALUES (?, ?)";
-        jdbcTemplate.update(client);
+        template.update(query, clientName, clientEmail);
     }
 
     public void removeClient(long clientID ) throws SQLException {
-        Connection conn = connect();
+
     }
 
     public void updateClient(Client client) throws SQLException {
-        Connection conn = connect();
+
     }
     public Client readClient(String clientName, String clientEmail) throws SQLException {
         Client client = null;
-        Connection conn = connect();
+
 
         return client;
     }

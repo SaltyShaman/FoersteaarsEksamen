@@ -2,12 +2,12 @@ package org.example.foersteaarseksamen.models;
 
 public class Client {
     private long clientID;
-    private String clientName;
+    private String clientCompany;
     private String clientEmail;
 
-    public Client(long clientID, String clientName, String clientEmail) {
+    public Client(long clientID, String clientCompany, String clientEmail) {
         this.clientID = clientID;
-        this.clientName = clientName;
+        this.clientCompany = clientCompany;
         this.clientEmail = clientEmail;
     }
 
@@ -15,8 +15,8 @@ public class Client {
         return clientID;
     }
 
-    public String getClientName() {
-        return clientName;
+    public String getClientCompany() {
+        return clientCompany;
     }
 
     public String getClientEmail() {
@@ -27,8 +27,8 @@ public class Client {
         this.clientID = clientID;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setClientCompany(String clientCompany) {
+        this.clientCompany = clientCompany;
     }
 
     public void setClientEmail(String clientEmail) {
@@ -39,7 +39,7 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "clientID=" + clientID +
-                ", clientName='" + clientName + '\'' +
+                ", clientCompany='" + clientCompany + '\'' +
                 ", clientEmail='" + clientEmail + '\'' +
                 '}';
     }
