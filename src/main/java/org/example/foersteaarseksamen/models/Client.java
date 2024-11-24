@@ -4,13 +4,23 @@ public class Client {
     private long clientID;
     private String clientCompany;
     private String clientEmail;
+    private String clientName;
 
-    public Client(String clientCompany, String clientEmail) {
+    public Client(String clientCompany, String clientEmail, String clientName) {
         this.clientCompany = clientCompany;
         this.clientEmail = clientEmail;
+        this.clientName = clientName;
     }
 
     public Client() {
+    }
+
+    public long getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(long clientID) {
+        this.clientID = clientID;
     }
 
     public String getClientCompany() {
@@ -21,6 +31,10 @@ public class Client {
         return clientEmail;
     }
 
+    public String getClientName() {
+        return clientName;
+    }
+
     public void setClientCompany(String clientCompany) {
         this.clientCompany = clientCompany;
     }
@@ -29,12 +43,8 @@ public class Client {
         this.clientEmail = clientEmail;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "clientEmail='" + clientEmail + '\'' +
-                ", clientCompany='" + clientCompany + '\'' +
-                '}';
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 }
 
