@@ -5,14 +5,12 @@ public class Client {
     private String clientCompany;
     private String clientEmail;
 
-    public Client(long clientID, String clientCompany, String clientEmail) {
-        this.clientID = clientID;
+    public Client(String clientCompany, String clientEmail) {
         this.clientCompany = clientCompany;
         this.clientEmail = clientEmail;
     }
 
-    public long getClientID() {
-        return clientID;
+    public Client() {
     }
 
     public String getClientCompany() {
@@ -21,10 +19,6 @@ public class Client {
 
     public String getClientEmail() {
         return clientEmail;
-    }
-
-    public void setClientID(long clientID) {
-        this.clientID = clientID;
     }
 
     public void setClientCompany(String clientCompany) {
@@ -38,9 +32,8 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "clientID=" + clientID +
+                "clientEmail='" + clientEmail + '\'' +
                 ", clientCompany='" + clientCompany + '\'' +
-                ", clientEmail='" + clientEmail + '\'' +
                 '}';
     }
 }

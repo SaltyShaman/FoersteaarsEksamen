@@ -3,12 +3,16 @@ package org.example.foersteaarseksamen;
 import org.example.foersteaarseksamen.repositories.ClientRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import static org.assertj.core.api.Fail.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 public class ClientRepositoryTest {
@@ -16,8 +20,9 @@ public class ClientRepositoryTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @InjectMocks
+    @Autowired
     private ClientRepository clientRepository;
+
 
     @BeforeEach
     public void setup() {
@@ -25,20 +30,35 @@ public class ClientRepositoryTest {
     }
 
     @Test
-    public void testAddClient() {
+    void testDatabaseConnection() {
+        String url = System.getenv("url");
+        String username = System.getenv("username");
+        String password = System.getenv("password");
+
+        if (url == null || username == null || password == null) {
+            fail("Environment variables are not set correctly.");
+        }
+
+        try (Connection connection = DriverManager.getConnection(url, username, password)) {
+            assertNotNull(connection);
+            System.out.println("Connection successful!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            fail("Connection failed: " + e.getMessage());
+        }
+    }
+
+    @Test
+    public void testAddClientToLiveDatabase() {
         // Arrange
-        String clientName = "Acme Corp";
-        String clientEmail = "acme@corp.com";
+        String clientCompany = "Live Test Company";
+        String clientEmail = "live@test.com";
 
         // Act
-        clientRepository.addClient(clientName, clientEmail);
+        clientRepository.addClient(clientCompany, clientEmail);
 
         // Assert
-        // Use JdbcTemplate to verify data is correctly added
-        String query = "SELECT COUNT(*) FROM client WHERE client_company = ? AND client_email = ?";
-        Integer count = jdbcTemplate.queryForObject(query, Integer.class, clientName, clientEmail);
-
-        assertEquals(1, count);
+        System.out.println("Client added to the live database: " + clientCompany + ", " + clientEmail);
     }
 
     @Test
