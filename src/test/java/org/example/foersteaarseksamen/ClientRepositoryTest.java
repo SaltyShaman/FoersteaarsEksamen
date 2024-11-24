@@ -3,6 +3,7 @@ package org.example.foersteaarseksamen;
 import org.example.foersteaarseksamen.repositories.ClientRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -48,18 +49,22 @@ public class ClientRepositoryTest {
         }
     }
 
-    @Test
-    public void testAddClientToLiveDatabase() {
+    @org.junit.Test
+    public void testAddClient() {
         // Arrange
-        String clientCompany = "Live Test Company";
-        String clientEmail = "live@test.com";
+        String clientName = "Acme Corp";
+        String clientEmail = "acme@corp.com";
+
+        String query = "INSERT INTO client (client_company, client_email) VALUES (?, ?)";
+        Mockito.doNothing().when(jdbcTemplate).update(query, clientName, clientEmail);
 
         // Act
-        clientRepository.addClient(clientCompany, clientEmail);
+        clientRepository.addClient();
 
         // Assert
-        System.out.println("Client added to the live database: " + clientCompany + ", " + clientEmail);
+        Mockito.verify(jdbcTemplate).update(query, clientName, clientEmail);
     }
+}
 
     @Test
     public void testRemoveClient() {

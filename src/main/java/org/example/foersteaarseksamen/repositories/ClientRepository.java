@@ -1,35 +1,47 @@
 package org.example.foersteaarseksamen.repositories;
 
 import org.example.foersteaarseksamen.models.Client;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class ClientRepository {
 
-    private JdbcTemplate template;
+    private final JdbcTemplate jdbcTemplate;
 
-    public ClientRepository(JdbcTemplate template) {
-        this.template = template;
+    public ClientRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
+    private final RowMapper<Client> rowMapper = (rs, rowNum) -> new Client(
+            rs.getString("client_company"),
+            rs.getString("client_email")
+    );
 
-    public void addClient(String clientCompany, String clientEmail) {
+    //create
+    public void addClient(@NotNull Client client) {
         String query = "INSERT INTO client(client_company, client_email) VALUES (?, ?)";
-        template.update(query, clientCompany, clientEmail);
+        jdbcTemplate.update(query, client.getClientCompany(), client.getClientEmail());
     }
 
+    //Read all
+    public List<Client> showClients() {
+        String query = "SELECT * FROM client";
+        return jdbcTemplate.query(query, rowMapper);
+    }
+
+    //Update
+    public void updateClient(@NotNull Client client) {
+        String query = "UPDATE client SET client_company = ?, client_email = ? WHERE client_id = ?";
+        jdbcTemplate.update(query, client.getClientCompany(), client.getClientEmail());
+    }
+
+    //Delete
     public void removeClient(Client client) {
 
-    }
-
-    public void updateClient(Client client) {
-
-    }
-    public Client readClient(String clientName, String clientEmail) {
-        Client client = null;
-
-
-        return client;
     }
 }
