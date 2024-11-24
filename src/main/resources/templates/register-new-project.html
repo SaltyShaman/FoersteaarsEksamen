@@ -13,12 +13,16 @@
 </div>
 
 <form th:action="@{/projects/create}" th:object="${projectManagement}" method="post">
+   <fieldset>ldset>
+
+       <legend>Create new project</legend>
     <label for="projectName">Project Name:</label>
     <input type="text" th:field="*{projectName}" id="projectName" required><br>
 
     <label for="projectLeader">Project Leader:</label>
     <input type="text" th:field="*{projectLeader}" id="projectLeader" required><br>
 
+       </fieldset>
     <button type="submit">Create Project</button>
 </form>
 </body>

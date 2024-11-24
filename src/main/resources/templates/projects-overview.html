@@ -17,8 +17,6 @@
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
-                <th>Client Company</th>
-                <th>Client email</th>
                 <th>Project Name</th>
                 <th>Project Leader</th>
                 <th>Go To</th>
@@ -26,18 +24,16 @@
             </tr>
             </thead>
             <tbody>
-            <!-- Thymeleaf loop to dynamicly loop has to be reconfigured -->
+            <!-- Thymeleaf loop to dynamically populate the table -->
             <tr th:each="project : ${projects}">
-                <td th:text="${project.clientCompany}">Client Placeholder</td>
-                <td th:text="${project.clientEmail}">Contact Placeholder email</td>
                 <td th:text="${project.projectName}">Project Placeholder</td>
                 <td th:text="${project.projectLeader}">Leader Placeholder</td>
                 <td>
-                    <!-- "Go to" button linking to a project-specific page -->
+                    <!-- "Go to" button linking to a project-specific page through ID -->
                     <a th:href="@{/project/{id}(id=${project.id})}" class="btn btn-primary btn-sm">Go to</a>
                 </td>
                 <td>
-                    <!-- Delete button -->
+                    <!-- Delete button per ID-->
                     <button class="btn btn-danger btn-sm" th:onclick="'deleteProject(' + ${project.id} + ')'">Delete</button>
                 </td>
             </tr>

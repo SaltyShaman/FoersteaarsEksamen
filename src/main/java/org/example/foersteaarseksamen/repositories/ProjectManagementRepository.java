@@ -21,10 +21,14 @@ public class ProjectManagementRepository {
 
     //RowMapper is used for all read operations
     //rs = result set fetching the SQL table names
-    private final RowMapper<ProjectManagement> rowMapper = (rs, rowNum) -> new ProjectManagement(
-            rs.getString("project_name"),
-            rs.getString("project_leader")
-    );
+    private final RowMapper<ProjectManagement> rowMapper = (rs, rowNum) -> {
+        ProjectManagement project = new ProjectManagement(
+                rs.getString("project_name"),
+                rs.getString("project_leader")
+        );
+        project.setProjectMannagementID(rs.getLong("project_management_id"));
+        return project;
+    };
 
     public void createProjectManagement(@NotNull ProjectManagement projectManagement) {
         String query = "INSERT INTO project_management (project_name, project_leader) VALUES (?, ?)";
@@ -42,20 +46,24 @@ public class ProjectManagementRepository {
     }
 
 
-    //Read a single table
+    //Read a single project table
     public ProjectManagement getProjectManagementByProjectName(String projectName) {
         String query = "SELECT * FROM project_management WHERE project_name = ?";
         try {
+            System.out.println("Executing query: " + query + " with parameter: " + projectName);
             return jdbcTemplate.queryForObject(query, rowMapper, projectName);
         } catch (EmptyResultDataAccessException e) {
-            return null; // return null incase no project found
+            System.out.println("No project found for name: " + projectName);
+            return null; //incase there is no project with specified name
         }
     }
+
 
 
     //List is because it contains all SQL tables
     public List<ProjectManagement> getAllProjectManagements() {
         String query = "SELECT * FROM project_management";
+        System.out.println("Number of projects: " + query.length() );
         return jdbcTemplate.query(query, rowMapper);
     }
 }

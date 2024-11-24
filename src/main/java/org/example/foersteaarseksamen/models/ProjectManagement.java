@@ -6,9 +6,10 @@ public class ProjectManagement {
     private String projectLeader;
     private long projectMannagementID; //ID is iniated outside the constructor, but still avaible for use
 
-    public ProjectManagement()
+    public ProjectManagement(){
+    }
 
-        public ProjectManagement(String projectName, String projectLeader,) {
+        public ProjectManagement(String projectName, String projectLeader) {
         this.projectName = projectName;
         this.projectLeader = projectLeader;
         }
