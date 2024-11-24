@@ -66,8 +66,4 @@ public class ClientRepositoryTest {
     }
 }
 
-    @Test
-    public void testRemoveClient() {
-        // Similar to above: add a client, then remove, and verify.
-    }
-}
+
