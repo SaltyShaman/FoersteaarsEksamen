@@ -19,6 +19,7 @@
         <table class="table table-bordered table-hover">
             <thead class="table-light">
             <tr>
+                <th>Project name</th>
                 <th>Employee</th>
                 <th>Work Area</th>
                 <th>Task</th>
@@ -28,6 +29,7 @@
             <tbody>
             <!-- Table elements to be reconfigured to actual needs-->
             <tr th:each="project : ${projects}">
+                <td th:text="${project.name}">Project Name placeholder</td>
                 <td th:text="${project.employee}">Employee Placeholder</td>
                 <td th:text="${project.workArea}">Work area placholder</td>
                 <td th:text="${project.task}">task placeholder</td>

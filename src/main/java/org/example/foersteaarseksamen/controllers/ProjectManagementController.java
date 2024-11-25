@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/projects") //redirect point
 public class ProjectManagementController {
 
     private final ProjectManagementServices projectManagementServices;
 
-    @Autowired
     public ProjectManagementController(ProjectManagementServices projectManagementServices) {
         this.projectManagementServices = projectManagementServices;
+    }
+
+    @GetMapping("/")
+    public String index(Model model) {
+        return "index";
     }
 
     //show the form
@@ -28,7 +31,7 @@ public class ProjectManagementController {
     }
 
     //create register form
-    @PostMapping("/create")
+    @PostMapping("/createPost")
     public String createProject(@ModelAttribute("projectManagement")
                                     ProjectManagement projectManagement, Model model) {
     if (projectManagementServices.projectExists(projectManagement.getProjectName())) { //it is a comparison
@@ -36,7 +39,14 @@ public class ProjectManagementController {
         return "register-new-project"; //return to the register form
     }
     projectManagementServices.createProjectManagement(projectManagement);
-    return "redirect:/projects?message=Project+successfully+created"; //redirect to listing page
+    model.addAttribute("projects", projectManagementServices.getAllProjectManagements());
+    return "redirect:/projects-overview"; //redirect to listing page
+    }
+
+    @GetMapping("/selectAllFromProjectManagement")
+    public String selectAllFromProjectManagement(Model model) {
+        model.addAttribute("projectManagements", projectManagementServices.getAllProjectManagements());
+        return "projects-overview";
     }
 
     //rest of the methods are going to be used outside of register-new-project.html
@@ -49,16 +59,12 @@ public class ProjectManagementController {
             model.addAttribute ("message", "Project not found");
         }
         projectManagementServices.updateProjectManagement(projectManagement);
-        return "redirect:/projects?message=Project+successfully+updated";
+        return "redirect:/projects-overview";
     }
 
-    //shows all projects
-    @GetMapping("/projects")
-    public String showProjectsOverview(Model model) {
-        List<ProjectManagement> projects = projectManagementServices.getAllProjectManagements();
-        model.addAttribute("projects", projects);
-        return "projects-overview"; // To see the list
-    }
+
+
+
 
 
 
@@ -76,7 +82,7 @@ public class ProjectManagementController {
         ProjectManagement project = projectManagementServices.getProjectManagementByProjectName(projectName);
         projectManagementServices.deleteProjectManagement(project);
 
-        return "redirect:/projects?message=Project+successfully+deleted";
+        return "redirect:/projects-overview";
     }
 
 
