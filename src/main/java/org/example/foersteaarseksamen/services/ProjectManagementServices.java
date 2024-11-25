@@ -12,15 +12,14 @@ public class ProjectManagementServices {
 
     private final ProjectManagementRepository projectManagementRepository;
 
-    @Autowired
     public ProjectManagementServices(ProjectManagementRepository projectManagementRepository) {
         this.projectManagementRepository = projectManagementRepository;
     }
 
-    public void createProjectManagement(ProjectManagement projectManagement) {
-        projectManagementRepository.createProjectManagement(projectManagement);
+    public void createProjectManagement(String projectName, String projectLeader) {
+        projectManagementRepository.createProjectManagement(projectName, projectLeader);
     }
-
+/*
     public void updateProjectManagement(ProjectManagement projectManagement) {
         projectManagementRepository.updateProjectManagement(projectManagement);
     }
@@ -39,11 +38,12 @@ public class ProjectManagementServices {
     /*
     Boolean is duplicate check for controller logic when making a new project.
     Each project has to have a unique name that is not null
-     */
+
 
     public boolean projectExists(String projectName) {
         return getProjectManagementByProjectName(projectName) != null;
     }
+*/
 
     public List<ProjectManagement> getAllProjectManagements() {
         return projectManagementRepository.getAllProjectManagements();

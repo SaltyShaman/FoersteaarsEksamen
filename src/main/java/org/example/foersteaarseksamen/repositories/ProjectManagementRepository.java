@@ -21,18 +21,12 @@ public class ProjectManagementRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // RowMapper is used for all read operations
-    // rs = result set fetching the SQL table names
-    private final RowMapper<ProjectManagement> rowMapper = (rs, rowNum) -> new ProjectManagement(
-            rs.getLong("project_management_id"),
-            rs.getString("project_name"),
-            rs.getString("project_leader")
-    );
-
-    public void createProjectManagement(@NotNull ProjectManagement projectManagement) {
+    public void createProjectManagement(String projectName, String projectLeader) {
         String query = "INSERT INTO project_management (project_name, project_leader) VALUES (?, ?)";
-        jdbcTemplate.update(query, projectManagement.getProjectName(), projectManagement.getProjectLeader());
+        jdbcTemplate.update(query, projectName, projectLeader);
     }
+
+    /*
 
     public void updateProjectManagement(@NotNull ProjectManagement projectManagement) {
         String query = "UPDATE project_management SET project_leader = ? WHERE project_name = ?";
@@ -44,7 +38,9 @@ public class ProjectManagementRepository {
         jdbcTemplate.update(query, projectManagement.getProjectName());
     }
 
-    // Read a single project table
+*/
+
+   /* // Read a single project table
     public ProjectManagement getProjectManagementByProjectName(String projectName) {
         String query = "SELECT * FROM project_management WHERE project_name = ?";
         try {
@@ -63,6 +59,8 @@ public class ProjectManagementRepository {
             return null;
         }
     }
+*/
+
 
     // List all projects
     public List<ProjectManagement> getAllProjectManagements() {
