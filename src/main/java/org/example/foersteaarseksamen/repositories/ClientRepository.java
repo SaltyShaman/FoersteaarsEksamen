@@ -1,13 +1,8 @@
 package org.example.foersteaarseksamen.repositories;
 
-import org.example.foersteaarseksamen.models.Client;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class ClientRepository {
@@ -18,19 +13,12 @@ public class ClientRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private final RowMapper<Client> rowMapper = (rs, rowNum) -> new Client(
-            rs.getString("client_company"),
-            rs.getString("client_email"),
-            rs.getString("client_name")
-    );
-
     //create
-
-    public void addClient(@NotNull Client client) {
+    public void addClient(@NotNull String clientCompany, String clientEmail, String clientName) {
         String query = "INSERT INTO client(client_company, client_email, client_name) VALUES (?, ?, ?)";
-        jdbcTemplate.update(query, client.getClientCompany(), client.getClientEmail(), client.getClientName());
+        jdbcTemplate.update(query, clientCompany, clientEmail, clientName);
     }
-
+/*
     //Read all clients
     public List<Client> showAllClients() {
         String query = "SELECT * FROM client";
@@ -59,4 +47,6 @@ public class ClientRepository {
         String query = "DELETE FROM client WHERE client_email = ?";
         jdbcTemplate.update(query, client.getClientEmail());
     }
+
+ */
 }
