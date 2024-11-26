@@ -2,7 +2,7 @@ package org.example.foersteaarseksamen.models;
 
 public class ProjectManagement {
 
-    private long projectMannagementID; //ID is iniated outside the constructor, but still avaible for use
+    private long projectMannagementID; //ID is generated in the SQL database
     private String projectName;
     private String projectLeader;
 

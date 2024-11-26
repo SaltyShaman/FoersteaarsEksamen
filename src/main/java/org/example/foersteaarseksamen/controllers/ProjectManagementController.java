@@ -3,11 +3,8 @@ package org.example.foersteaarseksamen.controllers;
 import org.springframework.ui.Model;
 import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.example.foersteaarseksamen.services.ProjectManagementServices;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class ProjectManagementController {
@@ -35,32 +32,15 @@ public class ProjectManagementController {
     //show the form
     @GetMapping("/create")
     public String showCreateProjectForm(Model model) {
-        model.addAttribute("projectManagement", new ProjectManagement());
         return "register-new-project";
     }
 
-/*
-    //create register form
-    @PostMapping("/createPost")
-    public String createProject(@ModelAttribute("projectManagement")
-                                ProjectManagement projectManagement, Model model) {
-        if (projectManagementServices.projectExists(projectManagement.getProjectName())) { //it is a comparison
-            model.addAttribute("message", "Project already exists");
-            return "register-new-project"; //return to the register form
-        }
-        projectManagementServices.createProjectManagement(projectManagement);
-        model.addAttribute("projectManagement", new ProjectManagement());
-        return "register-new-project"; //redirect to listing page
-    }
-*/
-
+    // create post is adding project_managements to the database
     @PostMapping("/createPost")
     public String createProject(@RequestParam String projectName, @RequestParam String projectLeader) {
         projectManagementServices.createProjectManagement(projectName, projectLeader);
-        return "redirect:/";
+        return  "redirect:/";
     }
-
-
 
    /*
     //Update redirects to listings page
