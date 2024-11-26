@@ -15,7 +15,8 @@ public class ProjectManagementController {
         this.projectManagementServices = projectManagementServices;
     }
 // index returning fungerer
-// select all fungerer på HTML tabellen
+// select all is also a button to go the table
+//createPost is how you add project_managements to SQL
 
     @GetMapping("/")
     public String index(Model model) {
@@ -29,19 +30,28 @@ public class ProjectManagementController {
     }
 
 
-    //show the form
+    //go to form
     @GetMapping("/create")
     public String showCreateProjectForm(Model model) {
         return "register-new-project";
     }
 
     // create post is adding project_managements to the database
+    //redirects to index afterwards
     @PostMapping("/createPost")
     public String createProject(@RequestParam String projectName, @RequestParam String projectLeader) {
         projectManagementServices.createProjectManagement(projectName, projectLeader);
-        return  "redirect:/";
+        return "redirect:/";
     }
 
+    @PostMapping("/deleteProject")
+        public String showDeleteProjectForm(@RequestParam int projectManagementId) {
+        projectManagementServices.deleteProjectManagement(projectManagementId);
+            return "redirect:/selectAllFromProjectManagement";
+    }
+
+
+//  ProjectManagement project = projectManagementServices.getProjectManagementByProjectName(projectName);
    /*
     //Update redirects to listings page
     @PostMapping("/update")
@@ -57,26 +67,4 @@ public class ProjectManagementController {
 */
 
 
-    //Delete also leads to listing page
-
-    /*steps:
-    1 fetch the project name on from the database
-    2: store the name in a new variable
-    3: delete the project name using the variable
-    */
-
-/*
-    @PostMapping("/delete/{projectName}")     //made with help from ChatGPT 24/11/24
-    public String deleteProject(@PathVariable("projectName") String projectName) {
-        // Use the service to retrieve and delete the project
-        ProjectManagement project = projectManagementServices.getProjectManagementByProjectName(projectName);
-        projectManagementServices.deleteProjectManagement(project);
-
-        return "redirect:/projects-overview";
-    }
-
-*/
 }
-
-
-

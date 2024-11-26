@@ -19,14 +19,19 @@ public class ProjectManagementServices {
     public void createProjectManagement(String projectName, String projectLeader) {
         projectManagementRepository.createProjectManagement(projectName, projectLeader);
     }
+
+    public void deleteProjectManagement(int projectManagementId) {
+        projectManagementRepository.deleteProjectManagement(projectManagementId);
+    }
+
+
+
 /*
     public void updateProjectManagement(ProjectManagement projectManagement) {
         projectManagementRepository.updateProjectManagement(projectManagement);
     }
 
-    public void deleteProjectManagement(ProjectManagement projectManagement) {
-        projectManagementRepository.deleteProjectManagement(projectManagement);
-    }
+
 
     public ProjectManagement getProjectManagementByProjectName(String projectName) {
        if (projectName == null || projectName.isEmpty()) { // error handling incase say typo or empty tabel

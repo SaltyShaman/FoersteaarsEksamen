@@ -26,6 +26,19 @@ public class ProjectManagementRepository {
         jdbcTemplate.update(query, projectName, projectLeader);
     }
 
+    public void deleteProjectManagement(int projectManagementId ) {
+        String query = "DELETE FROM project_management WHERE project_management_Id = ?";
+        jdbcTemplate.update(query, projectManagementId);
+    }
+
+
+    // List of all projects
+    public List<ProjectManagement> getAllProjectManagements() {
+        String query = "SELECT * FROM project_management";
+        RowMapper rowmapper1 = new BeanPropertyRowMapper(ProjectManagement.class);
+        return jdbcTemplate.query(query, rowmapper1);
+    }
+
     /*
 
     public void updateProjectManagement(@NotNull ProjectManagement projectManagement) {
@@ -33,10 +46,6 @@ public class ProjectManagementRepository {
         jdbcTemplate.update(query, projectManagement.getProjectLeader(), projectManagement.getProjectName());
     }
 
-    public void deleteProjectManagement(@NotNull ProjectManagement projectManagement) {
-        String query = "DELETE FROM project_management WHERE project_name = ?";
-        jdbcTemplate.update(query, projectManagement.getProjectName());
-    }
 
 */
 
@@ -62,12 +71,6 @@ public class ProjectManagementRepository {
 */
 
 
-    // List all projects
-    public List<ProjectManagement> getAllProjectManagements() {
-        String query = "SELECT * FROM project_management";
-   //     System.out.println("Number of projects: " + query.length());
-        RowMapper rowmapper1 = new BeanPropertyRowMapper(ProjectManagement.class);
-        return jdbcTemplate.query(query, rowmapper1);
-    }
+
 }
 

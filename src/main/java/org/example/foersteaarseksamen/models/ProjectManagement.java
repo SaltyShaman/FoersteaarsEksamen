@@ -2,26 +2,26 @@ package org.example.foersteaarseksamen.models;
 
 public class ProjectManagement {
 
-    private long projectMannagementID; //ID is generated in the SQL database
+    private int projectManagementId; //ID is generated in the SQL database
     private String projectName;
     private String projectLeader;
 
     public ProjectManagement(){
     }
 
-    public ProjectManagement(long projectManagementID, String projectName, String projectLeader) {
-        this.projectMannagementID = projectManagementID;
+
+    public ProjectManagement(int projectManagementId, String projectName, String projectLeader) {
+        this.projectManagementId = projectManagementId;
         this.projectName = projectName;
         this.projectLeader = projectLeader;
     }
 
-
-    public long getProjectMannagementID() {
-        return projectMannagementID;
+    public int getProjectManagementId() {
+        return projectManagementId;
     }
 
-    public void setProjectMannagementID(long projectMannagementID) {
-        this.projectMannagementID = projectMannagementID;
+    public void setProjectManagementId(int projectManagementId) {
+        this.projectManagementId = projectManagementId;
     }
 
     public String getProjectName() {
