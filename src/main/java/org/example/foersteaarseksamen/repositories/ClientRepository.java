@@ -1,8 +1,12 @@
 package org.example.foersteaarseksamen.repositories;
 
-import org.jetbrains.annotations.NotNull;
+import org.example.foersteaarseksamen.models.Client;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class ClientRepository {
@@ -14,17 +18,19 @@ public class ClientRepository {
     }
 
     //create
-    public void addClient(@NotNull String clientCompany, String clientEmail, String clientName) {
+    public void addClient(String clientCompany, String clientEmail, String clientName) {
         String query = "INSERT INTO client(client_company, client_email, client_name) VALUES (?, ?, ?)";
         jdbcTemplate.update(query, clientCompany, clientEmail, clientName);
     }
-/*
+
+
     //Read all clients
     public List<Client> showAllClients() {
         String query = "SELECT * FROM client";
-        return jdbcTemplate.query(query, rowMapper);
+        RowMapper rowMapper1 = new BeanPropertyRowMapper(Client.class);
+        return jdbcTemplate.query(query, rowMapper1);
     }
-
+    /*
     //Read one client
     public Client showClient(String clientEmail) {
         String query = "SELECT * FROM client WHERE client_email = ?";
@@ -41,12 +47,12 @@ public class ClientRepository {
         String query = "UPDATE client SET client_company = ?, client_name = ?, client_email = ? WHERE client_email = ?";
         jdbcTemplate.update(query, client.getClientCompany(), client.getClientEmail(), client.getClientName());
     }
-
+ */
     //Delete client
-    public void removeClient(Client client) {
-        String query = "DELETE FROM client WHERE client_email = ?";
-        jdbcTemplate.update(query, client.getClientEmail());
+    public void removeClient(long clientID) {
+        String query = "DELETE FROM client WHERE client_id = ?";
+        jdbcTemplate.update(query, clientID);
     }
 
- */
+
 }
