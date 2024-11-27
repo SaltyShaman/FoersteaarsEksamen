@@ -30,7 +30,7 @@ public class ClientController {
     @PostMapping("/addClient")
     public String addClient(@RequestParam String clientCompany, @RequestParam String clientEmail,@RequestParam String clientName) {
        clientService.addClient(clientCompany, clientEmail, clientName);
-        return "redirect:/";
+       return "redirect:/";
     }
 
     //Read
@@ -44,8 +44,9 @@ public class ClientController {
 
     //Delete
     @PostMapping("/removeClient")
-    public String removeClient(@RequestParam long clientID) {
-        clientService.removeClient(clientID);
+    public String showDeleteClientForm(@RequestParam int clientId) {
+        clientService.deleteClient(clientId);
+        System.out.println("Client Id received for deletion: " + clientId);
         return "redirect:/selectAllClients";
     }
 

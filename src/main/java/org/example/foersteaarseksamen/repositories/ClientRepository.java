@@ -49,9 +49,9 @@ public class ClientRepository {
     }
  */
     //Delete client
-    public void removeClient(long clientID) {
+    public void deleteClient(int clientId) {
         String query = "DELETE FROM client WHERE client_id = ?";
-        jdbcTemplate.update(query, clientID);
+        jdbcTemplate.update(query, clientId);
     }
 
 
