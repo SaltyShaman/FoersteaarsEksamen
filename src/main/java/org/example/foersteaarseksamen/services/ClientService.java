@@ -33,9 +33,16 @@ public class ClientService {
         return clientRepository.showAllClients();
     }
 
+    public void updateClient(String clientCompany, String clientName, String clientEmail, String oldClientEmail) {
+        clientRepository.updateClient(clientCompany, clientName, clientEmail, oldClientEmail);
+    }
+
+
     public void deleteClient(int client_id) {
         clientRepository.deleteClient(client_id);
     }
+
+
 
 
 

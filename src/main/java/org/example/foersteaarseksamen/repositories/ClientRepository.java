@@ -31,7 +31,7 @@ public class ClientRepository {
         return jdbcTemplate.query(query, rowMapper1);
     }
     /*
-    //Read one client
+    //Read one client- Don't know if this method is necessary.
     public Client showClient(String clientEmail) {
         String query = "SELECT * FROM client WHERE client_email = ?";
         try {
@@ -41,13 +41,14 @@ public class ClientRepository {
         }
 
     }
-
+*/
     //Update client
-    public void updateClient(@NotNull Client client) {
-        String query = "UPDATE client SET client_company = ?, client_name = ?, client_email = ? WHERE client_email = ?";
-        jdbcTemplate.update(query, client.getClientCompany(), client.getClientEmail(), client.getClientName());
+    public void updateClient(String clientCompany, String clientName, String clientEmail, String oldClientEmail) {
+        String query = "UPDATE `client` SET client_company = ?, client_name = ?, client_email = ? WHERE client_email = ?";
+        jdbcTemplate.update(query, clientCompany, clientName, clientEmail, oldClientEmail);
     }
- */
+
+
     //Delete client
     public void deleteClient(int client_id) {
         String query = "DELETE FROM `client` WHERE client_id = ?";

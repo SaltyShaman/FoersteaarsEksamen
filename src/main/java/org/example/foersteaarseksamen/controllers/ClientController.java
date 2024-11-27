@@ -41,6 +41,15 @@ public class ClientController {
     }
 
     //Update
+    @GetMapping("/updateClient")
+    public String showUpdateClientForm(Model model) {
+        return "update-client";
+    }
+    @PostMapping("/updateClient")
+    public String updateClient(@RequestParam String clientCompany, @RequestParam String clientEmail, @RequestParam String clientName, @RequestParam String oldClientEmail) {
+        clientService.updateClient(clientCompany, clientEmail, clientName, oldClientEmail);
+        return "redirect:/selectAllClients";
+    }
 
     //Delete
     @PostMapping("/removeClient")
