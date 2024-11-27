@@ -33,8 +33,8 @@ public class ClientService {
         return clientRepository.showAllClients();
     }
 
-    public void deleteClient(int clientId) {
-        clientRepository.deleteClient(clientId);
+    public void deleteClient(int client_id) {
+        clientRepository.deleteClient(client_id);
     }
 
 

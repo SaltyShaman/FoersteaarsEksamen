@@ -1,27 +1,29 @@
 package org.example.foersteaarseksamen.models;
 
 public class Client {
-    private int clientId;
+    private int client_id;
     private String clientCompany;
     private String clientEmail;
     private String clientName;
 
-    public Client(int clientId, String clientCompany, String clientEmail, String clientName) {
-        this.clientId = clientId;
+    public Client() {
+    }
+
+    public Client(int client_id, String clientCompany, String clientEmail, String clientName) {
+        this.client_id = client_id;
         this.clientCompany = clientCompany;
         this.clientEmail = clientEmail;
         this.clientName = clientName;
     }
 
-    public Client() {
+
+
+    public int getClient_id() {
+        return client_id;
     }
 
-    public long getClientId() {
-        return clientId;
-    }
-
-    public void setClientID(int clientId) {
-        this.clientId = clientId;
+    public void setClient_id(int client_id) {
+        this.client_id = client_id;
     }
 
     public String getClientCompany() {

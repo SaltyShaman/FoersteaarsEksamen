@@ -19,14 +19,14 @@ public class ClientRepository {
 
     //create
     public void addClient(String clientCompany, String clientEmail, String clientName) {
-        String query = "INSERT INTO client(client_company, client_email, client_name) VALUES (?, ?, ?)";
+        String query = "INSERT INTO `client`(client_company, client_email, client_name) VALUES (?, ?, ?)";
         jdbcTemplate.update(query, clientCompany, clientEmail, clientName);
     }
 
 
     //Read all clients
     public List<Client> showAllClients() {
-        String query = "SELECT * FROM client";
+        String query = "SELECT * FROM `client`";
         RowMapper rowMapper1 = new BeanPropertyRowMapper(Client.class);
         return jdbcTemplate.query(query, rowMapper1);
     }
@@ -49,9 +49,10 @@ public class ClientRepository {
     }
  */
     //Delete client
-    public void deleteClient(int clientId) {
-        String query = "DELETE FROM client WHERE client_id = ?";
-        jdbcTemplate.update(query, clientId);
+    public void deleteClient(int client_id) {
+        String query = "DELETE FROM `client` WHERE client_id = ?";
+        System.out.println("Executing DELETE query for client_id: " + client_id);
+        jdbcTemplate.update(query, client_id);
     }
 
 

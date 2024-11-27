@@ -44,9 +44,9 @@ public class ClientController {
 
     //Delete
     @PostMapping("/removeClient")
-    public String showDeleteClientForm(@RequestParam int clientId) {
-        clientService.deleteClient(clientId);
-        System.out.println("Client Id received for deletion: " + clientId);
+    public String showDeleteClientForm(@RequestParam int client_id) {
+        clientService.deleteClient(client_id);
+        System.out.println("Client Id received for deletion: " + client_id);
         return "redirect:/selectAllClients";
     }
 
