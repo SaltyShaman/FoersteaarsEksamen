@@ -13,13 +13,17 @@
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Highlighted Project</h1>
-    <h2>Project: <span th:text="${project.name}"></span></h2>
+    <legend></legend>
+
+    <h1>Project: <span th:text="${calculator.name}"></span></h1>
+    <h2>Client: <span th:text="${client_company}"></span></h2>
+
+    </legend>
+
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead class="table-light">
             <tr>
-                <th>Client name</th>
                 <th>Employee</th>
                 <th>Work Area</th>
                 <th>Task</th>
@@ -28,12 +32,12 @@
             </thead>
             <tbody>
             <!-- Table elements to be reconfigured to actual needs-->
-            <tr th:each="project : ${projects}">
-                <td th:text="${project.name}">Project Name placeholder</td>
-                <td th:text="${project.employee}">Employee Placeholder</td>
-                <td th:text="${project.workArea}">Work area placholder</td>
-                <td th:text="${project.task}">task placeholder</td>
-                <td th:text="${project.estimatedHours}">hour estimater (number)</td>
+            <tr th:each="calculator : ${calculatortables}">
+                <td th:text="${calculator.name}">Project Name placeholder</td>
+                <td th:text="${calculator.employee}">Employee Placeholder</td>
+                <td th:text="${calculator.workArea}">Work area placholder</td>
+                <td th:text="${calculator.task}">task placeholder</td>
+                <td th:text="${calculator.estimatedHours}">hour estimater (number)</td>
             </tr>
             </tbody>
         </table>

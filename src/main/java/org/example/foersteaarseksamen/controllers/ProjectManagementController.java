@@ -50,21 +50,29 @@ public class ProjectManagementController {
             return "redirect:/selectAllFromProjectManagement";
     }
 
-
-//  ProjectManagement project = projectManagementServices.getProjectManagementByProjectName(projectName);
-   /*
-    //Update redirects to listings page
-    @PostMapping("/update")
-    public String updateProject(@ModelAttribute("projectManagement")
-                                    ProjectManagement projectManagement, Model model) {
-        if (projectManagementServices.projectExists(projectManagement.getProjectName())) {
-            model.addAttribute ("message", "Project not found");
-        }
-        projectManagementServices.updateProjectManagement(projectManagement);
-        return "redirect:/projects-overview";
+    @GetMapping("/updateProject")
+    public String showUpdateProjectForm(Model model){
+        return "update-project";
     }
 
-*/
+    @PostMapping("/update")
+    public String updateProject(@RequestParam int projectManagementId,
+                                @RequestParam String projectName,
+                                @RequestParam String projectLeader) {
+        projectManagementServices.updateProjectManagement(projectManagementId, projectName, projectLeader);
+        return "redirect:/selectAllFromProjectManagement";
+    }
 
+/*
+    @GetMapping("/updateForm")
+    public String showUpdateForm(Model model,
+                                 @RequestParam int projectManagementId,) {
+        model.addAttribute("projectManagementId", projectManagementId);
+        model.addAttribute("projectName", projectName);
+        model.addAttribute("projectLeader", projectLeader);
+
+        return "update-project";
+    }
+*/
 
 }

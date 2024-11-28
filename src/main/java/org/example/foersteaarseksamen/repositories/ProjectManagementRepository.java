@@ -39,36 +39,10 @@ public class ProjectManagementRepository {
         return jdbcTemplate.query(query, rowmapper1);
     }
 
-    /*
-
-    public void updateProjectManagement(@NotNull ProjectManagement projectManagement) {
-        String query = "UPDATE project_management SET project_leader = ? WHERE project_name = ?";
-        jdbcTemplate.update(query, projectManagement.getProjectLeader(), projectManagement.getProjectName());
+    public void updateProjectManagement(int projectManagementId, String projectName, String projectLeader) {
+        String query = "UPDATE project_management SET project_name = ?, project_leader = ? WHERE project_management_Id = ?";
+        jdbcTemplate.update(query, projectName, projectLeader, projectManagementId);
     }
-
-
-*/
-
-   /* // Read a single project table
-    public ProjectManagement getProjectManagementByProjectName(String projectName) {
-        String query = "SELECT * FROM project_management WHERE project_name = ?";
-        try {
-            return jdbcTemplate.queryForObject(query, new Object[]{projectName}, new RowMapper<ProjectManagement>() {
-                @Override
-                public ProjectManagement mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    return new ProjectManagement(
-                            rs.getLong("project_management_id"),
-                            rs.getString("project_name"),
-                            rs.getString("project_leader")
-                    );
-                }
-            });
-        } catch (EmptyResultDataAccessException e) {
-            System.out.println("No project found for name: " + projectName);
-            return null;
-        }
-    }
-*/
 
 
 

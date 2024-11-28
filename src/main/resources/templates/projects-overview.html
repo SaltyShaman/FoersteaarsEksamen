@@ -19,7 +19,7 @@
             <tr>
                 <th>Project Name</th>
                 <th>Project Leader</th>
-                <th>Go To</th>
+                <th>Update</th>
                 <th>Delete</th>
             </tr>
             </thead>
@@ -29,8 +29,11 @@
                 <td th:text="${project.projectName}"></td>
                 <td th:text="${project.projectLeader}"></td>
                 <td>
-                    <!-- "Go to" button linking WORK IN PROGRESS -->
-                  <!--  <a th:href="@{/project/{id}(id=${project.id})}" class="btn btn-primary btn-sm">Go to</a> -->
+                    <form action ="/updateProject" method = "get">
+                        <input type="hidden" name="projectManagementId" th:value="${project.projectManagementId}">
+                        <button type ="submit">Update</button>
+                    </form>
+
                 </td>
                 <td>
 
@@ -39,8 +42,6 @@
                         <button type ="submit">Delete</button>
                     </form>
 
-                    <!-- Delete button per ID WORK IN PROGRESS-->
-                  <!--  <button class="btn btn-danger btn-sm" th:onclick="'deleteProject(' + ${project.id} + ')'">Delete</button> -->
                 </td>
             </tr>
             </tbody>

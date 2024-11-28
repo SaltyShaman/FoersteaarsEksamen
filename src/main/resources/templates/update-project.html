@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update project</title>
+</head>
+<body>
+
+<h1>Update project</h1>
+<legend>
+    <form action="/update" method="post">
+        <input type="hidden" name="projectManagementId" value="${projectManagementId}">
+
+        <td>New project name</td><td><input type="text" name="projectName"></td>
+        <td>New project leader</td><td><input type="text" name="projectLeader"></td>
+
+        <button type="submit">Update Project</button>
+    </form>
+
+
+
+</legend>
+
+</body>
+</html>
