@@ -6,6 +6,7 @@
     <title>Welcome to the Project Production Tool</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/projects.css}">
     <style>
         /* Global Page Styling */
         body {
@@ -57,13 +58,22 @@
         <button type="submit" class="btn btn-primary">See Project Overview</button>
     </form>
 
+    <form action="/selectAllClients" method="get">
+        <button type="submit" class="btn btn-primary">See Clients Overview</button>
+    </form>
+
     <form action="/create" method="get">
-        <button type="submit" class="btn btn-success">Register New Project</button>
+        <button type="submit" class="btn btn-primary">Register New Project</button>
+    </form>
+
+    <form action="/addClient" method="get">
+        <button type="submit" class="btn btn-primary">Register New Client</button>
     </form>
 
     <form action="/" method="get">
         <button type="submit" class="btn btn-secondary">Go to Index</button>
     </form>
+
 </main>
 
 <footer>

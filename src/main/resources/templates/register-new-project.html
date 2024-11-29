@@ -3,25 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register new project</title>
-    <link rel="stylesheet" href="../static/registerForm.css">
+    <title>Register New Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Page Styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .alert {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
 </head>
 <body>
-<H1>Register new project</H1>
-<div th:if="${message}">
-    <p th:text="${message}" style="color:green;"></p>
-</div>
+<header>
+    <h1>Register New Project</h1>
+</header>
 
-<form action="/createPost" method = "post">
-    <td>Project name</td><td><input type="text" name="projectName"></td>
-    <td>Project leader</td><td><input type="text" name="projectLeader"></td>
+<main>
+    <!-- Success or error message -->
+    <div th:if="${message}" class="alert alert-success" role="alert" th:text="${message}"></div>
 
-    <button type="submit">Submit</button>
+    <!-- Registration Form -->
+    <form action="/createPost" method="post">
+        <div class="mb-3">
+            <label for="projectName" class="form-label">Project Name</label>
+            <input type="text" id="projectName" name="projectName" class="form-control" placeholder="Enter project name" required>
+        </div>
+        <div class="mb-3">
+            <label for="projectLeader" class="form-label">Project Leader</label>
+            <input type="text" id="projectLeader" name="projectLeader" class="form-control" placeholder="Enter project leader name" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
-</form>
-<form action ="/" method = "get">
-    <button type ="submit">Go to index</button>
-</form>
+    <!-- Return to Index Button -->
+    <form action="/" method="get">
+        <button type="submit" class="btn btn-secondary mt-3">Go to Index</button>
+    </form>
+</main>
 
+<footer>
+    <p>&copy; 2024 Project Management System</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
