@@ -39,9 +39,22 @@ public class ProjectManagementRepository {
         return jdbcTemplate.query(query, rowmapper1);
     }
 
-    public void updateProjectManagement(int projectManagementId, String projectName, String projectLeader) {
-        String query = "UPDATE project_management SET project_name = ?, project_leader = ? WHERE project_management_Id = ?";
+    public void updateProjectManagement(String projectName, String projectLeader, int projectManagementId) {
+        String query = "UPDATE project_management SET project_name = ?, project_leader = ? WHERE project_name = ?";
         jdbcTemplate.update(query, projectName, projectLeader, projectManagementId);
+    }
+
+    //made with ChatGPT nov 29
+    public ProjectManagement findById(int projectManagementId) {
+        String query = "SELECT * FROM project_management WHERE project_management_Id = ?";
+        RowMapper<ProjectManagement> rowMapper = new BeanPropertyRowMapper<>(ProjectManagement.class);
+
+        try {
+            return jdbcTemplate.queryForObject(query, rowMapper, projectManagementId);
+        } catch (EmptyResultDataAccessException e) {
+            // Handle the case where no project is found for the given ID
+            return null; // or throw a custom exception if preferred
+        }
     }
 
 

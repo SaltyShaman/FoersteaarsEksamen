@@ -7,9 +7,10 @@
 <body>
 
 <h1>Update project</h1>
-<legend>
+
     <form action="/update" method="post">
-        <input type="hidden" name="projectManagementId" value="${projectManagementId}">
+
+        <input type="hidden" name="projectManagementId" th:value="${projectManagement.projectManagementId}">
 
         <td>New project name</td><td><input type="text" name="projectName"></td>
         <td>New project leader</td><td><input type="text" name="projectLeader"></td>
@@ -19,7 +20,7 @@
 
 
 
-</legend>
+
 
 </body>
 </html>

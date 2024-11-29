@@ -27,10 +27,13 @@ public class ProjectManagementServices {
 
 
 
-    public void updateProjectManagement(int projectManagementId, String projectName, String projectLeader) {
-        projectManagementRepository.updateProjectManagement(projectManagementId, projectName, projectLeader);
+    public void updateProjectManagement(String projectName, String projectLeader, int projectManagementId) {
+        projectManagementRepository.updateProjectManagement(projectName, projectLeader, projectManagementId);
     }
 
+    public ProjectManagement getProjectById(int projectManagementId) {
+        return projectManagementRepository.findById(projectManagementId);
+    }
 
     public List<ProjectManagement> getAllProjectManagements() {
         return projectManagementRepository.getAllProjectManagements();

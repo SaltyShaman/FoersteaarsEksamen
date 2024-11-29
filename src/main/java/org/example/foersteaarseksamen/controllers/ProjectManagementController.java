@@ -51,15 +51,22 @@ public class ProjectManagementController {
     }
 
     @GetMapping("/updateProject")
-    public String showUpdateProjectForm(Model model){
+    public String showUpdateProjectForm(@RequestParam int projectManagementId, Model model) {
+        // Retrieve the project from the service layer using the ID
+        ProjectManagement project = projectManagementServices.getProjectById(projectManagementId);
+
+        // Add the project object to the model
+        model.addAttribute("projectManagement", project);
+
         return "update-project";
     }
 
+
     @PostMapping("/update")
-    public String updateProject(@RequestParam int projectManagementId,
-                                @RequestParam String projectName,
-                                @RequestParam String projectLeader) {
-        projectManagementServices.updateProjectManagement(projectManagementId, projectName, projectLeader);
+    public String updateProject(@RequestParam String projectName,
+                                @RequestParam String projectLeader,
+                                @RequestParam int projectManagementId) {
+        projectManagementServices.updateProjectManagement(projectName, projectLeader, projectManagementId);
         return "redirect:/selectAllFromProjectManagement";
     }
 
