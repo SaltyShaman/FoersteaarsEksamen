@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register new project</title>
+    <link rel="stylesheet" href="../static/registerForm.css">
+</head>
+<body>
+<H1>Register new project</H1>
+<div th:if="${message}">
+    <p th:text="${message}" style="color:green;"></p>
+</div>
+
+<form action="/createPost" method = "post">
+    <td>Project name</td><td><input type="text" name="projectName"></td>
+    <td>Project leader</td><td><input type="text" name="projectLeader"></td>
+
+    <button type="submit">Submit</button>
+
+</form>
+<form action ="/" method = "get">
+    <button type ="submit">Go to index</button>
+</form>
+
+</body>
+</html>
