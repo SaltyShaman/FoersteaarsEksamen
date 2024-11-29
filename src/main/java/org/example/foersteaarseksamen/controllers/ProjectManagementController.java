@@ -50,6 +50,7 @@ public class ProjectManagementController {
             return "redirect:/selectAllFromProjectManagement";
     }
 
+    /*
     @GetMapping("/updateProject")
     public String showUpdateProjectForm(@RequestParam int projectManagementId, Model model) {
         // Retrieve the project from the service layer using the ID
@@ -61,6 +62,7 @@ public class ProjectManagementController {
         return "update-project";
     }
 
+*/
 
     @PostMapping("/update")
     public String updateProject(@RequestParam String projectName,

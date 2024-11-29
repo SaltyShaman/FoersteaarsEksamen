@@ -17,11 +17,6 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        return "index";
-    }
-
     //Create
     @GetMapping("/addClient")
     public String showCreateClientForm(Model model) {
