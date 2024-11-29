@@ -16,6 +16,7 @@ public class Employee {
         this.employeeName = employeeName;
         this.workArea = workArea;
         this.task = task;
+        this.estimatedHoursPerEmployee = estimatedHoursPerEmployee;
     }
 
     public int getEmployeeId() {
