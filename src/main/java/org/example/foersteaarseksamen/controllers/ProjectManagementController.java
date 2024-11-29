@@ -1,10 +1,11 @@
 package org.example.foersteaarseksamen.controllers;
 
-import org.springframework.ui.Model;
-import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.example.foersteaarseksamen.services.ProjectManagementServices;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProjectManagementController {
@@ -50,38 +51,17 @@ public class ProjectManagementController {
             return "redirect:/selectAllFromProjectManagement";
     }
 
-    /*
+
     @GetMapping("/updateProject")
-    public String showUpdateProjectForm(@RequestParam int projectManagementId, Model model) {
-        // Retrieve the project from the service layer using the ID
-        ProjectManagement project = projectManagementServices.getProjectById(projectManagementId);
-
-        // Add the project object to the model
-        model.addAttribute("projectManagement", project);
-
+    public String showUpdateProjectForm(Model model) {
         return "update-project";
     }
 
-*/
-
-    @PostMapping("/update")
+    @PostMapping("/updateProject")
     public String updateProject(@RequestParam String projectName,
                                 @RequestParam String projectLeader,
-                                @RequestParam int projectManagementId) {
-        projectManagementServices.updateProjectManagement(projectName, projectLeader, projectManagementId);
+                                @RequestParam String oldProjectName) {
+        projectManagementServices.updateProjectManagement(projectName, projectLeader, oldProjectName);
         return "redirect:/selectAllFromProjectManagement";
     }
-
-/*
-    @GetMapping("/updateForm")
-    public String showUpdateForm(Model model,
-                                 @RequestParam int projectManagementId,) {
-        model.addAttribute("projectManagementId", projectManagementId);
-        model.addAttribute("projectName", projectName);
-        model.addAttribute("projectLeader", projectLeader);
-
-        return "update-project";
-    }
-*/
-
 }

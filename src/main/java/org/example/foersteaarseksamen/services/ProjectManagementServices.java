@@ -2,7 +2,6 @@ package org.example.foersteaarseksamen.services;
 
 import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.example.foersteaarseksamen.repositories.ProjectManagementRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +26,8 @@ public class ProjectManagementServices {
 
 
 
-    public void updateProjectManagement(String projectName, String projectLeader, int projectManagementId) {
-        projectManagementRepository.updateProjectManagement(projectName, projectLeader, projectManagementId);
+    public void updateProjectManagement(String projectName, String projectLeader, String oldProjectName) {
+        projectManagementRepository.updateProjectManagement(projectName, projectLeader, oldProjectName);
     }
 
     public ProjectManagement getProjectById(int projectManagementId) {

@@ -1,15 +1,12 @@
 package org.example.foersteaarseksamen.repositories;
 
 import org.example.foersteaarseksamen.models.ProjectManagement;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -39,9 +36,9 @@ public class ProjectManagementRepository {
         return jdbcTemplate.query(query, rowmapper1);
     }
 
-    public void updateProjectManagement(String projectName, String projectLeader, int projectManagementId) {
+    public void updateProjectManagement(String projectName, String projectLeader, String oldProjectName) {
         String query = "UPDATE project_management SET project_name = ?, project_leader = ? WHERE project_name = ?";
-        jdbcTemplate.update(query, projectName, projectLeader, projectManagementId);
+        jdbcTemplate.update(query, projectName, projectLeader, oldProjectName);
     }
 
     //made with ChatGPT nov 29

@@ -41,7 +41,10 @@ public class ClientController {
         return "update-client";
     }
     @PostMapping("/updateClient")
-    public String updateClient(@RequestParam String clientCompany, @RequestParam String clientEmail, @RequestParam String clientName, @RequestParam String oldClientEmail) {
+    public String updateClient(@RequestParam String clientCompany,
+                               @RequestParam String clientEmail,
+                               @RequestParam String clientName,
+                               @RequestParam String oldClientEmail) {
         clientService.updateClient(clientCompany, clientEmail, clientName, oldClientEmail);
         return "redirect:/selectAllClients";
     }
