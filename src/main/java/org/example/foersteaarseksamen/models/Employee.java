@@ -6,17 +6,20 @@ public class Employee {
     private String employeeName;
     private String workArea;
     private String task;
-    private String estimatedHoursPerEmployee;
+    private int estimatedHoursPerEmployee;
+    private Integer calculatorTableId;
 
     public Employee() {
     }
 
-    public Employee(int employeeId, String employeeName, String workArea, String task, String estimatedHoursPerEmployee) {
+    public Employee(int employeeId, String employeeName, String workArea,
+                    String task, int estimatedHoursPerEmployee, Integer calculatorTableId) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.workArea = workArea;
         this.task = task;
         this.estimatedHoursPerEmployee = estimatedHoursPerEmployee;
+        this.calculatorTableId = calculatorTableId;
     }
 
     public int getEmployeeId() {
@@ -51,12 +54,20 @@ public class Employee {
         this.task = task;
     }
 
-    public String getEstimatedHoursPerEmployee() {
+    public int getEstimatedHoursPerEmployee() {
         return estimatedHoursPerEmployee;
     }
 
-    public void setEstimatedHoursPerEmployee(String estimatedHoursPerEmployee) {
+    public void setEstimatedHoursPerEmployee(int estimatedHoursPerEmployee) {
         this.estimatedHoursPerEmployee = estimatedHoursPerEmployee;
+    }
+
+    public Integer getCalculatorTableId() {
+        return calculatorTableId;
+    }
+
+    public void setCalculatorTableId(Integer calculatorTableId) {
+        this.calculatorTableId = calculatorTableId;
     }
 }
 
