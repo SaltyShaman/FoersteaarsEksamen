@@ -108,7 +108,9 @@
                     <td th:text="${client.clientName}"></td>
                     <td>
                         <form action="/updateClient" method="get">
-                            <input type="hidden" name="client_id" th:value="${client.client_id}">
+                            <input type="hidden" name="clientEmail" th:value="${client.clientEmail}">
+                            <input type="hidden" name="clientCompany" th:value="${client.clientCompany}">
+                            <input type="hidden" name="clientName" th:value="${client.clientName}">
                             <button type="submit" class="btn btn-outline-primary">Opdater</button>
                         </form>
                     </td>

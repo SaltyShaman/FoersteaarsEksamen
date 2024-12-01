@@ -70,25 +70,25 @@
 <main>
     <!-- Form for updating client details -->
     <form action="/updateClient" method="post">
-        <!-- Hidden input to track client email (primary key or identifier) -->
-        <div class="mb-3">
-            <label for="clientEmail" class="form-label">Eksisterende emailadresse</label>
-            <input type="text" name="oldClientEmail" class="form-control" placeholder="Tilføj ny emailadresse" required />
-        </div>
+        <!-- Hidden input to track original client email -->
+        <input type="hidden" name="oldClientEmail" th:value="${param.clientEmail}" />
 
         <div class="mb-3">
             <label for="clientCompany" class="form-label">Firma:</label>
-            <input type="text" id="clientCompany" name="clientCompany" class="form-control" placeholder="Tilføj firmanavn"  required />
+            <input type="text" id="clientCompany" name="clientCompany" class="form-control"
+                   th:placeholder="${param.clientCompany}" required />
         </div>
 
         <div class="mb-3">
             <label for="clientName" class="form-label">Navn:</label>
-            <input type="text" id="clientName" name="clientName" class="form-control" placeholder="Tilføj klientens navn" required />
+            <input type="text" id="clientName" name="clientName" class="form-control"
+                   th:placeholder="${param.clientName}" required />
         </div>
 
         <div class="mb-3">
             <label for="clientEmail" class="form-label">Email:</label>
-            <input type="email" id="clientEmail" name="clientEmail" class="form-control" placeholder="Tilføj emailadresse" required />
+            <input type="email" id="clientEmail" name="clientEmail" class="form-control"
+                   th:placeholder="${param.clientEmail}" required />
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Opdater klient</button>
