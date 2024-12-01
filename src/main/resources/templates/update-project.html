@@ -70,24 +70,35 @@
 <main>
     <!-- Form for updating client details -->
     <form action="/updateProject" method="post">
-        <!-- Hidden input to track client email (primary key or identifier) -->
+        <!-- Hidden input to track project ID -->
+        <input type="hidden" name="projectManagementId" th:value="${param.projectManagementId}" />
+
         <div class="mb-3">
-            <label for="projectName" class="form-label">Eksisterende projekt navn</label>
-            <input type="text" name="oldProjectName" class="form-control" placeholder="Eksisterende projekt navn" value="Eksisterende projekt navn" required />
+            <label for="projectName" class="form-label">Eksisterende projekt navn:</label>
+            <input type="text" name="oldProjectName" class="form-control"
+                   th:placeholder="${param.projectName}" required />
         </div>
 
         <div class="mb-3">
             <label for="projectName" class="form-label">Nyt projekt navn:</label>
-            <input type="text" id="projectName" name="projectName" class="form-control" placeholder="Tilføj nyt projekt navn" value="projekt navn" required />
+            <input type="text" id="projectName" name="projectName" class="form-control"
+                   placeholder="Tilføj nyt projekt navn" required />
         </div>
 
         <div class="mb-3">
-            <label for=" projectLeader" class="form-label">Projekt leder:</label>
-            <input type="text" id=" projectLeader" name="projectLeader" class="form-control" placeholder="Tilføj ny projektleder" value="Projekt leder" required />
+            <label for="projectLeader" class="form-label">Projektleder:</label>
+            <input type="text" id="projectLeader" name="projectLeader" class="form-control"
+                   th:placeholder="${param.projectLeader}" required />
         </div>
 
         <button type="submit" class="btn btn-primary w-100">Opdater projekt</button>
     </form>
+
+
+    <form action="/selectAllFromProjectManagement" method="get" class="mt-3">
+        <button type="submit" class="btn btn-secondary w-100">Tilbage til overblik over projekter</button>
+    </form>
+
 </main>
 
 <footer>
