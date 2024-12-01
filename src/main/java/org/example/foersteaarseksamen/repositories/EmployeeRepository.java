@@ -19,9 +19,7 @@ public class EmployeeRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 /*
-    TO-DO: read fra en dropdown menu
-            read all employees
-            rette create til
+    TO-DO: tilføje ny employee til projektet fra en dropdown menu
   */
 
     public void CreateEmployee(String employeeName, String workArea,

@@ -24,7 +24,6 @@ public class EmployeeController {
 
     /*
 //to-do: redirect into the calculator page
-         read all employees
          read specific employee
      */
     @PostMapping("/createEmployeePost")
