@@ -22,4 +22,8 @@ public class CalculatorService {
         return calculatorRepository.getProjectManagementId(projectName);
     }
 
+    public void createCalculator (int clientId, int projectManagementId) {
+        calculatorRepository.createCalculator(clientId, projectManagementId);
+    }
+
 }

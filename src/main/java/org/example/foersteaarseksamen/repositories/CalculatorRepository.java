@@ -33,4 +33,9 @@ public class CalculatorRepository {
         return jdbcTemplate.queryForObject(sql, Integer.class, projectName);
     }
 
+    public void createCalculator (int clientId, int projectManagementId) {
+        String sql = "INSERT INTO calculator_table(client_id, project_management_id) VALUES(?,?)";
+        jdbcTemplate.update(sql, clientId, projectManagementId);
+    }
+
 }
