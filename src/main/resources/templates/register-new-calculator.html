@@ -27,18 +27,18 @@
             <select name="clientCompany" id="clientCompany">
                 <option value="" disabled selected>Vælg firma</option>
                 <option th:each="client : ${clients}"
-                        th:value="${client.id}"
+                        th:value="${client.client_id}"
                         th:text="${client.clientCompany}">
                 </option>
             </select>
         </form>
     </div>
 
-
+<!--
     <div>
         <label for="projectName">Projekt navn:</label>
         <input type="text" id="projectName" name="projectName" required>
-    </div>
+    </div> -->
 
     <div>
         <form>

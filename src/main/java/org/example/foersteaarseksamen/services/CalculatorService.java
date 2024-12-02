@@ -3,11 +3,9 @@ package org.example.foersteaarseksamen.services;
 
 import org.example.foersteaarseksamen.models.Client;
 import org.example.foersteaarseksamen.repositories.CalculatorRepository;
-import org.example.foersteaarseksamen.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CalculatorService {

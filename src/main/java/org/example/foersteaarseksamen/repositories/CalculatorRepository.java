@@ -6,8 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.swing.tree.RowMapper;
-import java.awt.*;
+import java.util.List;
 
 @Repository
 public class CalculatorRepository {
@@ -43,9 +42,9 @@ public class CalculatorRepository {
         jdbcTemplate.update(query, calculatorName, client_id,  projectManagementId);
     }
 
-    public List getAllClients() {
+    public List<Client> getAllClients() {
         String query = "SELECT * FROM client";
         BeanPropertyRowMapper<Client> rowmapper = new BeanPropertyRowMapper<>(Client.class);
-        return (List) jdbcTemplate.query(query, rowmapper);
+        return jdbcTemplate.query(query, rowmapper);
     }
 }
