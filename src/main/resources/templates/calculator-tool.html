@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Highlighted Project</title>
+    <title>Project Calculator</title>
     <!-- Include Bootstrap CSS  w/ ChatGPT-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--own css styling -->
-    <link rel="stylesheet" href="../static/highlightedProject.css" rel="stylesheet">
 
 </head>
 <body>
 
+
+<!--
+    <p>Add Employees to the project:</p>
+<select class="form-control" id="employeeDropdown" name="employeeId">
+   <option value="" disabled selected>Select an Employee</option>
+         Populate the dropdown with employee names
+     <option th:each="employee : ${employees}"
+     th:value="${employee.employeeId}"
+      th:text="${employee.employeeName}"></option>
+   </select>
+
+-->
+
+
 <div class="container mt-5">
-    <legend></legend>
-
-    <h1>Project: <span th:text="${calculator.name}"></span></h1>
-    <h2>Client: <span th:text="${client_company}"></span></h2>
-
-    </legend>
 
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -31,16 +37,15 @@
             </tr>
             </thead>
             <tbody>
-            <!-- Table elements to be reconfigured to actual needs-->
-            <tr th:each="calculator : ${calculatortables}">
-                <td th:text="${calculator.name}">Project Name placeholder</td>
-                <td th:text="${calculator.employee}">Employee Placeholder</td>
-                <td th:text="${calculator.workArea}">Work area placholder</td>
-                <td th:text="${calculator.task}">task placeholder</td>
-                <td th:text="${calculator.estimatedHours}">hour estimater (number)</td>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.employeeName}"></td>
+                <td th:text="${employee.workArea}"></td>
+                <td th:text="${employee.task}"></td>
+                <td th:text="${employee.estimatedHoursPerEmployee}"></td>
             </tr>
             </tbody>
         </table>
+
     </div>
 </div>
 
