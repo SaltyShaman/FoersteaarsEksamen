@@ -17,29 +17,29 @@
     </div>
 
     <div>
-        <form>
+
             <label for="clientCompany">Se klient firmaer:</label>
-            <select name="clientCompany" id="clientCompany">
+            <select name="client_id" id="clientCompany">
                 <option value="" disabled selected>Vælg firma</option>
                 <option th:each="client : ${clients}"
                         th:value="${client.client_id}"
                         th:text="${client.clientCompany}">
                 </option>
             </select>
-        </form>
+
     </div>
 
     <div>
-        <form>
+
         <label for="projectName">Vælg projekt</label>
-        <select name="projectName" id="projectName">
+        <select name="projectManagementId" id="projectName">
             <option value="" disabled selected>Se projekter</option>
             <option th:each="projectManagement : ${projects}"
                     th:value="${projectManagement.projectManagementId}"
                     th:text="${projectManagement.projectName}">
             </option>
         </select>
-        </form>
+
     </div>
 
 
