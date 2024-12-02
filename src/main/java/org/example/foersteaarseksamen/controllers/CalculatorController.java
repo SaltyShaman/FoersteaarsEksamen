@@ -17,8 +17,6 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
-
-
     @PostMapping("/createCalculatorPost")
     public String createCalculator(@RequestParam String calculatorName,
                                    @RequestParam int client_id,
