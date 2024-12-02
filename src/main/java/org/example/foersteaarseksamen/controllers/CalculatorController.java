@@ -17,6 +17,7 @@ public class CalculatorController {
         this.calculatorService = calculatorService;
     }
 
+/*
 
     //inspired by ChatGPt dec 1
     @GetMapping("/readClientId")
@@ -35,6 +36,8 @@ public class CalculatorController {
     }
 
 
+*/
+
     @PostMapping("/createCalculatorPost")
     public String createCalculator(@RequestParam String calculatorName,
                                    @RequestParam int client_id,
@@ -46,6 +49,7 @@ public class CalculatorController {
     @GetMapping("/createCalculator")
     public String showCalculator(Model model) {
         model.addAttribute("clients", calculatorService.getAllClients());
+        model.addAttribute("projects", calculatorService.getAllProjects());
         return "register-new-calculator";
     }
 

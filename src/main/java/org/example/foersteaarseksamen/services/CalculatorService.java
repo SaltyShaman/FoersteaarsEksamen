@@ -1,6 +1,6 @@
 package org.example.foersteaarseksamen.services;
 
-
+import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.example.foersteaarseksamen.models.Client;
 import org.example.foersteaarseksamen.repositories.CalculatorRepository;
 import org.springframework.stereotype.Service;
@@ -32,4 +32,9 @@ public class CalculatorService {
     public List<Client> getAllClients() {
         return calculatorRepository.getAllClients();
     }
+
+    public List<ProjectManagement> getAllProjects() {
+        return calculatorRepository.getAllProjects();
+    }
+
 }

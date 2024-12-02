@@ -2,8 +2,10 @@ package org.example.foersteaarseksamen.repositories;
 
 
 import org.example.foersteaarseksamen.models.Client;
+import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -44,7 +46,13 @@ public class CalculatorRepository {
 
     public List<Client> getAllClients() {
         String query = "SELECT * FROM client";
-        BeanPropertyRowMapper<Client> rowmapper = new BeanPropertyRowMapper<>(Client.class);
+        RowMapper rowmapper = new BeanPropertyRowMapper(Client.class);
+        return jdbcTemplate.query(query, rowmapper);
+    }
+
+    public List<ProjectManagement> getAllProjects() {
+        String query = "SELECT * FROM project_management";
+        RowMapper rowmapper = new BeanPropertyRowMapper(ProjectManagement.class);
         return jdbcTemplate.query(query, rowmapper);
     }
 }
