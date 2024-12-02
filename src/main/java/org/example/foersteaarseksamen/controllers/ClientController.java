@@ -22,6 +22,7 @@ public class ClientController {
     public String showCreateClientForm(Model model) {
         return "register-new-client";
     }
+
     @PostMapping("/addClient")
     public String addClient(@RequestParam String clientCompany, @RequestParam String clientEmail,@RequestParam String clientName) {
        clientService.addClient(clientCompany, clientEmail, clientName);
