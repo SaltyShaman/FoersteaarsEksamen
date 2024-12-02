@@ -44,12 +44,5 @@ public class EmployeeRepository {
         });
     }
 
-/*
-    public List<Employee> ReadAllEmployees() {
-        String query = "SELECT * FROM employee_table";
-        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
-        return jdbcTemplate.query(query, rowMapper);
-    }
 
-*/
 }

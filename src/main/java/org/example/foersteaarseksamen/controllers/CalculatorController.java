@@ -1,7 +1,8 @@
 package org.example.foersteaarseksamen.controllers;
 
 
-import ch.qos.logback.core.model.Model;
+import org.example.foersteaarseksamen.models.Client;
+import org.springframework.ui.Model;
 import org.example.foersteaarseksamen.models.Calculator;
 import org.example.foersteaarseksamen.repositories.CalculatorRepository;
 import org.example.foersteaarseksamen.services.CalculatorService;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class CalculatorController {
@@ -25,31 +28,35 @@ public class CalculatorController {
     //inspired by ChatGPt dec 1
     @GetMapping("/readClientId")
     public String readClientId(@RequestParam String clientCompany, Model model) {
-        int clientId = calculatorService.getClientId(clientCompany);
-        model.addAttribute("clientId", clientId);
+        int client_id = calculatorService.getClientId(clientCompany);
+        model.addAttribute("client_id", client_id);
         return "register-new-calculator";
     }
-
-
 
     //inspired by ChatGPt dec 1
     @GetMapping("/readProjectId")
     public String readProjectId(@RequestParam String projectName, Model model) {
         int projectId = calculatorService.getProjectManagementId(projectName);
-        model.addAtribute ("projetId", projectId);
+        model.addAttribute("projectId", projectId);
         return "register-new-calculator";
     }
 
+
     @PostMapping("/createCalculatorPost")
-    public String createCalculator(@RequestParam int clientId,
+    public String createCalculator(@RequestParam String calculatorName,
+                                   @RequestParam int client_id,
                                    @RequestParam int projectManagementId) {
+        calculatorService.createCalculator(calculatorName, client_id, projectManagementId);
         return "redirect:/calculator-tool";
     }
 
-    @GetMapping("/crateCalculator")
+    @GetMapping("/createCalculator")
     public String showCalculator(Model model) {
+        model.addAttribute("clients", calculatorService.getAllClients());
         return "register-new-calculator";
     }
+
+
 
 
 }

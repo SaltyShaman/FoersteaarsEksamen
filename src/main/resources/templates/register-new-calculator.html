@@ -2,29 +2,66 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Register new calculator</title>
+    <title>Register New Calculator</title>
 </head>
 <body>
-<h1>Ny project estimering</h1>
-</body>
+<h1>Ny Project Estimering</h1>
 
 <h2>Opret nyt lommeregner ID med brug af eksisterende projekter og klienter</h2>
 
-<form = "/createCalculatorPost" method="post">
+<!-- Main form for creating a new calculator -->
+<form action="/createCalculatorPost" method="post">
+    <div>
+        <label for="calculatorName">Lommeregner navn:</label>
+        <input type="text" id="calculatorName" name="calculatorName" required>
+    </div>
 
-<form th:action="@{/readClientId}" method="get">
-    <label for="clientCompany">Vælge klient firmaets navn:</label>
-    <select name="clientName" id="clientName">
-        <option th:each="client : ${clients}"
-                th:value="${client.clientName}"
-                th:text="${client.clientName}"></option>
-    </select>
-    <button type="submit">Submit</button>
+    <div>
+        <label for="companyName">Klient firma navn:</label>
+        <input type="text" id="companyName" name="companyName" required>
+    </div>
+
+    <div>
+        <form>
+            <label for="clientCompany">Se klient firmaer:</label>
+            <select name="clientCompany" id="clientCompany">
+                <option value="" disabled selected>Vælg firma</option>
+                <option th:each="client : ${clients}"
+                        th:value="${client.id}"
+                        th:text="${client.clientCompany}">
+                </option>
+            </select>
+        </form>
+    </div>
+
+
+    <div>
+        <label for="projectName">Projekt navn:</label>
+        <input type="text" id="projectName" name="projectName" required>
+    </div>
+
+    <div>
+        <form>
+        <label for="projectName">Se projekt navne</label>
+        <select name="projectName" id="projectName">
+            <option value="" disabled selected>Se projekter</option>
+            <option th:each="project : ${projects}"
+                    th:value="${project.id}"
+                    th:text="${project.projectName}">
+            </option>
+        </select>
+        </form>
+    </div>
+
+
+    <div>
+        <button type="submit">Tilføj</button>
+    </div>
 </form>
 
-
+<!-- Button to return to the index -->
+<form action="/" method="get">
+    <button type="submit">Indeks</button>
 </form>
-<form action ="/" method = "get">
-    <button type ="submit">Indeks</button>
-</form>
+</body>
 </html>

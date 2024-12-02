@@ -1,8 +1,13 @@
 package org.example.foersteaarseksamen.repositories;
 
 
+import org.example.foersteaarseksamen.models.Client;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import javax.swing.tree.RowMapper;
+import java.awt.*;
 
 @Repository
 public class CalculatorRepository {
@@ -33,9 +38,14 @@ public class CalculatorRepository {
         return jdbcTemplate.queryForObject(sql, Integer.class, projectName);
     }
 
-    public void createCalculator (int clientId, int projectManagementId) {
-        String sql = "INSERT INTO calculator_table(client_id, project_management_id) VALUES(?,?)";
-        jdbcTemplate.update(sql, clientId, projectManagementId);
+    public void createCalculator (String calculatorName, int client_id, int projectManagementId) {
+        String query = "INSERT INTO calculator_table (calculator_name, client_id, project_management_id) VALUES (?, ?, ?)";
+        jdbcTemplate.update(query, calculatorName, client_id,  projectManagementId);
     }
 
+    public List getAllClients() {
+        String query = "SELECT * FROM client";
+        BeanPropertyRowMapper<Client> rowmapper = new BeanPropertyRowMapper<>(Client.class);
+        return (List) jdbcTemplate.query(query, rowmapper);
+    }
 }
