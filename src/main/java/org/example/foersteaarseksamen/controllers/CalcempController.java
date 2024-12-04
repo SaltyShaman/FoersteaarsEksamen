@@ -18,21 +18,25 @@ public class CalcempController {
         this.calcempService = calcempService;
     }
 
+
+
     @GetMapping("/readAllCalculators")
     public String readAllCalculators(Model model) {
         model.addAttribute("calculators", calcempService.findAllCalculators());
         return "calculator-sellector";
     }
 
-    @GetMapping("/getCalculatorDataDisplay")
-    public String getCalculatorDataDisplay(Model model) {
-        return "calculator-tool";    }
-
     @PostMapping("/getCalculatorData")
-    public String getCalcEmpDetailsFromDropdown(@RequestParam("calculatorName") String calculatorName, Model model) {
-        Calcemp calcEmp = calcempService.getCalcEmpDetails(calculatorName);
-        model.addAttribute("calcEmp", calcEmp);
-        return "redirect/getCalculatorDataDisplay";
+    public String getCalcEmpDetailsFromDropdown(@RequestParam String calculatorName) {
+        return "redirect:/getCalculatorDataDisplay?calculatorName=" + calculatorName;
     }
+
+    @GetMapping("/getCalculatorDataDisplay")
+    public String getCalculatorDataDisplay(Model model, @RequestParam String calculatorName) {
+        model.addAttribute("calcEmp", calcempService.getCalcEmpDetails(calculatorName));
+        return "calculator-tool";
+    }
+
+
 
 }

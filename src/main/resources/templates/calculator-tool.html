@@ -6,60 +6,31 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h1>Detaljer for projektet</h1>
+<h1>Detaljer for Kalkulator</h1>
 
-<div>
-    <h2>Information</h2>
-    <table>
-        <tr>
-            <th>Lommeregner navn</th>
-            <td th:text="${calcEmp.calculatorName}"></td>
-        </tr>
-        <tr>
-            <th>Klient</th>
-            <td th:text="${calcEmp.clientName}"></td>
-        </tr>
-        <tr>
-            <th>Klientens firma</th>
-            <td th:text="${calcEmp.clientCompany}"></td>
-        </tr>
-        <tr>
-            <th>Projekt navn</th>
-            <td th:text="${calcEmp.projectName}"></td>
-        </tr>
-        <tr>
-            <th>Projekt ansvarlig</th>
-            <td th:text="${calcEmp.projectLeader}"></td>
-        </tr>
-    </table>
-</div>
+<h2>Kunde Information</h2>
+<p>Virksomhed: <span th:text="${calcEmp.clientCompany}"></span></p>
+<p>Navn: <span th:text="${calcEmp.clientName}"></span></p>
 
-<div>
-    <h2>Ansatte på projektet</h2>
-    <ul>
-        <li th:each="employeeName : ${calcEmp.employeeNames}" th:text="${employeeName}"></li>
-    </ul>
-</div>
+<h2>Projekt Information</h2>
+<p>Projekt Navn: <span th:text="${calcEmp.projectName}"></span></p>
+<p>Projektleder: <span th:text="${calcEmp.projectLeader}"></span></p>
 
-<div>
-    <h2>Opgaver og arbejds område</h2>
-    <table>
-        <tr>
-            <th>Arbejds område</th>
-            <td th:text="${calcEmp.workArea}"></td>
-        </tr>
-        <tr>
-            <th>Opgave</th>
-            <td th:text="${calcEmp.task}"></td>
-        </tr>
-    </table>
-</div>
-
+<h2>Medarbejdere</h2>
+<ul>
+    <li th:each="employee : ${calcEmp.employees}">
+        Navn: <span th:text="${employee.employeeName}"></span>,
+        Arbejdsområde: <span th:text="${employee.workArea}"></span>,
+        Opgave: <span th:text="${employee.task}"></span>,
+        Estimerede Timer: <span th:text="${employee.estimatedHoursPerEmployee}"></span>
+    </li>
+</ul>
+<!--
 <div>
     <h2>Tidsestimat per ansat</h2>
     <p th:text="${calcEmp.estimatedHoursPerEmployee}"></p>
 </div>
-
+-->
 <div>
     <a href="/">Gå tilbage til hovedsiden</a>
 </div>
