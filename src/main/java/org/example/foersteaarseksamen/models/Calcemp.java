@@ -4,11 +4,17 @@ import java.util.List;
 
 public class Calcemp {
 
-    // Employee variables
-    private List<String> employeeNames; // Updated to support multiple employees
-    private String workArea;
-    private String task;
-    private int estimatedHoursPerEmployee;
+    // Employee is treated as list of objects to be fetched from the SQL tabel
+    private List <Employee> employees;
+
+    /*
+    Variables:
+    employee_name
+    work_area
+    task
+    estimated_work_hours_per_employee INTEGER
+    calculator_table_id INTEGER and foreign key
+     */
 
     // Client variables
     private String clientCompany;
@@ -27,13 +33,10 @@ public class Calcemp {
     }
 
     // Parameterized constructor
-    public Calcemp(List<String> employeeNames, String workArea, String task, int estimatedHoursPerEmployee,
-                   String clientCompany, String clientName,
+// Corrected parameterized constructor
+    public Calcemp(List<Employee> employees, String clientCompany, String clientName,
                    String projectName, String projectLeader, String calculatorName, int calculatorTableId) {
-        this.employeeNames = employeeNames;
-        this.workArea = workArea;
-        this.task = task;
-        this.estimatedHoursPerEmployee = estimatedHoursPerEmployee;
+        this.employees = employees;
         this.clientCompany = clientCompany;
         this.clientName = clientName;
         this.projectName = projectName;
@@ -42,69 +45,12 @@ public class Calcemp {
         this.calculatorTableId = calculatorTableId;
     }
 
-    // Getters and setters
-    public List<String> getEmployeeNames() {
-        return employeeNames;
+    public int getCalculatorTableId() {
+        return calculatorTableId;
     }
 
-    public void setEmployeeNames(List<String> employeeNames) {
-        this.employeeNames = employeeNames;
-    }
-
-    public String getWorkArea() {
-        return workArea;
-    }
-
-    public void setWorkArea(String workArea) {
-        this.workArea = workArea;
-    }
-
-    public String getTask() {
-        return task;
-    }
-
-    public void setTask(String task) {
-        this.task = task;
-    }
-
-    public int getEstimatedHoursPerEmployee() {
-        return estimatedHoursPerEmployee;
-    }
-
-    public void setEstimatedHoursPerEmployee(int estimatedHoursPerEmployee) {
-        this.estimatedHoursPerEmployee = estimatedHoursPerEmployee;
-    }
-
-    public String getClientCompany() {
-        return clientCompany;
-    }
-
-    public void setClientCompany(String clientCompany) {
-        this.clientCompany = clientCompany;
-    }
-
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public String getProjectLeader() {
-        return projectLeader;
-    }
-
-    public void setProjectLeader(String projectLeader) {
-        this.projectLeader = projectLeader;
+    public void setCalculatorTableId(int calculatorTableId) {
+        this.calculatorTableId = calculatorTableId;
     }
 
     public String getCalculatorName() {
@@ -115,11 +61,43 @@ public class Calcemp {
         this.calculatorName = calculatorName;
     }
 
-    public int getCalculatorTableId() {
-        return calculatorTableId;
+    public String getProjectLeader() {
+        return projectLeader;
     }
 
-    public void setCalculatorTableId(int calculatorTableId) {
-        this.calculatorTableId = calculatorTableId;
+    public void setProjectLeader(String projectLeader) {
+        this.projectLeader = projectLeader;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getClientCompany() {
+        return clientCompany;
+    }
+
+    public void setClientCompany(String clientCompany) {
+        this.clientCompany = clientCompany;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

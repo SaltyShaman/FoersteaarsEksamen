@@ -6,9 +6,8 @@ import org.example.foersteaarseksamen.models.Calculator;
 import org.example.foersteaarseksamen.repositories.CalcempRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Service
 public class CalcempService {
@@ -22,6 +21,7 @@ public class CalcempService {
     public List<Calculator> findAllCalculators() {
         return calcempRepository.findAllCalculators();
     }
+
 
 
     public Calcemp getCalcEmpDetails(String calculatorName) {
