@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sellect calculator data</title>
+</head>
+<body>
+
+<h1>Vælg lommeregner for at se data</h1>
+<!--Form for sellecting calculator -->
+
+<form action="/getCalcEmpData" method="post">
+
+    <label for="calculator">Vælg lommeregner:</label>
+    <select name="calculator_id" id="calculator">
+        <option value="" disabled selected>Vælg lommeregner</option>
+        <option th:each="calculator : ${calculators}"
+                th:value="${calculator.calculatorTableId}"
+                th:text="${calculator.calculatorName}">
+        </option>
+    </select>
+
+    <button type="submit">Se datasæt</button>
+
+</form>
+</body>
+</html>

@@ -1,50 +1,54 @@
 package org.example.foersteaarseksamen.models;
 
+import java.util.List;
+
 public class Calcemp {
 
-    //employee variables
-    private String employeeName;
+    // Employee variables
+    private List<String> employeeNames; // Updated to support multiple employees
     private String workArea;
     private String task;
     private int estimatedHoursPerEmployee;
 
-    //client variables
+    // Client variables
     private String clientCompany;
     private String clientName;
 
-    //project variables
+    // Project variables
     private String projectName;
     private String projectLeader;
 
-    //calculator variables
+    // Calculator variables
     private String calculatorName;
+    private int calculatorTableId;
 
+    // Default constructor
     public Calcemp() {
     }
 
-    public Calcemp(String employeeName, String workArea, String task, int estimatedHoursPerEmployee,
+    // Parameterized constructor
+    public Calcemp(List<String> employeeNames, String workArea, String task, int estimatedHoursPerEmployee,
                    String clientCompany, String clientName,
-                   String projectName, String projectLeader) {
-        this.employeeName = employeeName;
+                   String projectName, String projectLeader, String calculatorName, int calculatorTableId) {
+        this.employeeNames = employeeNames;
         this.workArea = workArea;
         this.task = task;
         this.estimatedHoursPerEmployee = estimatedHoursPerEmployee;
-
         this.clientCompany = clientCompany;
         this.clientName = clientName;
-
         this.projectName = projectName;
         this.projectLeader = projectLeader;
-
         this.calculatorName = calculatorName;
+        this.calculatorTableId = calculatorTableId;
     }
 
-    public String getEmployeeName() {
-        return employeeName;
+    // Getters and setters
+    public List<String> getEmployeeNames() {
+        return employeeNames;
     }
 
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    public void setEmployeeNames(List<String> employeeNames) {
+        this.employeeNames = employeeNames;
     }
 
     public String getWorkArea() {
@@ -111,16 +115,11 @@ public class Calcemp {
         this.calculatorName = calculatorName;
     }
 
-    //join statements med sellecter ud fra de tabeller man ønsker at have med alias
+    public int getCalculatorTableId() {
+        return calculatorTableId;
+    }
 
-    /*
-
-    ingen nye ID
-
-    og de ønskede kolonne navne
-
-    her i model klassen skal man have de ting man ønsker at vise med som variabler
-
-
-     */
+    public void setCalculatorTableId(int calculatorTableId) {
+        this.calculatorTableId = calculatorTableId;
+    }
 }

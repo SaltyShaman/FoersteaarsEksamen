@@ -26,8 +26,32 @@ public class CalcempRepository {
         return jdbcTemplate.query(query, rowmapper);
     }
 
+    public Calcemp getCalcEmpDetails(String calculatorName) {
+        String calcSql = "SELECT c.calculator_table_id, c.calculator_name, cl.client_name, cl.client_company, " +
+                "pm.project_name, pm.project_leader " +
+                "FROM calculator_table c " +
+                "JOIN client cl ON c.client_id = cl.client_id " +
+                "JOIN project_management pm ON c.project_management_id = pm.project_management_id " +
+                "WHERE c.calculator_name = ?";
 
+        Calcemp calcEmp = jdbcTemplate.queryForObject(calcSql, (rs, rowNum) -> {
+            Calcemp ce = new Calcemp();
+            ce.setCalculatorTableId(rs.getInt("calculator_table_id"));
+            ce.setCalculatorName(rs.getString("calculator_name"));
+            ce.setClientName(rs.getString("client_name"));
+            ce.setClientCompany(rs.getString("client_company"));
+            ce.setProjectName(rs.getString("project_name"));
+            ce.setProjectLeader(rs.getString("project_leader"));
+            return ce;
+        }, calculatorName);
 
+        String empSql = "SELECT employee_name FROM employee_table WHERE calculator_table_id = ?";
+        List<String> employeeNames = jdbcTemplate.query(empSql, (rs, rowNum) -> rs.getString("employee_name"),
+                calcEmp.getCalculatorTableId());
+
+        calcEmp.setEmployeeNames(employeeNames);
+        return calcEmp;
+    }
 
     //join statements
 

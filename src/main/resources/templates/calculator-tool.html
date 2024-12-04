@@ -10,18 +10,17 @@
 </head>
 <body>
 
-<!--Form for sellecting calculator -->
 
-<div>
-    <label for="calculator">Vælg lommeregner:</label>
-    <select name="calculator_id" id="calculator">
-        <option value="" disabled selected>Vælg lommeregner</option>
-        <option th:each="calculator : ${calculators}"
-                th:value="${calculator.calculatorTableId}"
-                th:text="${calculator.calculatorName}">
-        </option>
-    </select>
+
+<div th:if="${projects}">
+    <h3>Projekt Navn:</h3>
+    <p th:text="${projects}">Projekt navn vises her</p>
 </div>
+
+
+
+
+
 
 <div class="container mt-5">
 

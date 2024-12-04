@@ -1,11 +1,13 @@
 package org.example.foersteaarseksamen.controllers;
 
-
+import org.example.foersteaarseksamen.models.Calcemp;
 import org.example.foersteaarseksamen.services.CalcempService;
 import org.example.foersteaarseksamen.services.CalculatorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalcempController {
@@ -19,6 +21,14 @@ public class CalcempController {
     @GetMapping("/readAllCalculators")
     public String readAllCalculators(Model model) {
         model.addAttribute("calculators", calcempService.findAllCalculators());
+
+        return "calculator-sellector";
+    }
+
+    @PostMapping("/getCalculatorData")
+    public String getCalcEmpDetailsFromDropdown(@RequestParam("calculatorName") String calculatorName, Model model) {
+        Calcemp calcEmp = calcempService.getCalcEmpDetails(calculatorName);
+        model.addAttribute("calcEmp", calcEmp);
         return "calculator-tool";
     }
 
