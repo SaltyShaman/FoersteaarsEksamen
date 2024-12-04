@@ -42,7 +42,7 @@ public class ProjectManagementController {
     @PostMapping("/createPost")
     public String createProject(@RequestParam String projectName, @RequestParam String projectLeader) {
         projectManagementServices.createProjectManagement(projectName, projectLeader);
-        return "redirect:/";
+        return "redirect:/selectAllFromProjectManagement";
     }
 
     @PostMapping("/deleteProject")

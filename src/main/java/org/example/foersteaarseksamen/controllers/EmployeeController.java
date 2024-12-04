@@ -16,12 +16,11 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
+    //Create
     @GetMapping("/createEmployee")
     public String createEmployee(Model model) {
         return "create-employee";
     }
-
     /*
 //to-do: redirect into the calculator page
          read specific employee
