@@ -1,53 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Calculator</title>
-    <!-- Include Bootstrap CSS  w/ ChatGPT-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <title>Calculator Tool for Project Leader</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+<h1>Detaljer for Kalkulator</h1>
 
+<h2>Kunde Information</h2>
+<p>Virksomhed: <span th:text="${calcEmp.clientCompany}"></span></p>
+<p>Navn: <span th:text="${calcEmp.clientName}"></span></p>
 
+<h2>Projekt Information</h2>
+<p>Projekt Navn: <span th:text="${calcEmp.projectName}"></span></p>
+<p>Projektleder: <span th:text="${calcEmp.projectLeader}"></span></p>
+
+<h2>Medarbejdere</h2>
+<ul>
+    <li th:each="employee : ${calcEmp.employees}">
+        Navn: <span th:text="${employee.employeeName}"></span>,
+        Arbejdsområde: <span th:text="${employee.workArea}"></span>,
+        Opgave: <span th:text="${employee.task}"></span>,
+        Estimerede Timer: <span th:text="${employee.estimatedHoursPerEmployee}"></span>
+    </li>
+</ul>
 <!--
-    <p>Add Employees to the project:</p>
-<select class="form-control" id="employeeDropdown" name="employeeId">
-   <option value="" disabled selected>Select an Employee</option>
-         Populate the dropdown with employee names
-     <option th:each="employee : ${employees}"
-     th:value="${employee.employeeId}"
-      th:text="${employee.employeeName}"></option>
-   </select>
-
--->
-
-
-<div class="container mt-5">
-
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead class="table-light">
-            <tr>
-                <th>Employee</th>
-                <th>Work Area</th>
-                <th>Task</th>
-                <th>Estimated Work Hours For Employee</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="employee : ${employees}">
-                <td th:text="${employee.employeeName}"></td>
-                <td th:text="${employee.workArea}"></td>
-                <td th:text="${employee.task}"></td>
-                <td th:text="${employee.estimatedHoursPerEmployee}"></td>
-            </tr>
-            </tbody>
-        </table>
-
-    </div>
+<div>
+    <h2>Tidsestimat per ansat</h2>
+    <p th:text="${calcEmp.estimatedHoursPerEmployee}"></p>
 </div>
-
+-->
+<div>
+    <a href="/">Gå tilbage til hovedsiden</a>
+</div>
 </body>
 </html>

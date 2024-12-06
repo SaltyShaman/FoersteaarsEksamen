@@ -39,6 +39,7 @@ public class EmployeeController {
         return "calculator-tool";
     }
 
+
     @GetMapping("/selectAllEmployees")
     public String selectAllEmployees(Model model) {
         model.addAttribute("employees", employeeService.ReadAllEmployees());

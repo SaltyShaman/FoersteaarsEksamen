@@ -17,40 +17,29 @@
     </div>
 
     <div>
-        <label for="companyName">Klient firma navn:</label>
-        <input type="text" id="companyName" name="companyName" required>
-    </div>
 
-    <div>
-        <form>
             <label for="clientCompany">Se klient firmaer:</label>
-            <select name="clientCompany" id="clientCompany">
+            <select name="client_id" id="clientCompany">
                 <option value="" disabled selected>Vælg firma</option>
                 <option th:each="client : ${clients}"
                         th:value="${client.client_id}"
                         th:text="${client.clientCompany}">
                 </option>
             </select>
-        </form>
+
     </div>
 
-<!--
     <div>
-        <label for="projectName">Projekt navn:</label>
-        <input type="text" id="projectName" name="projectName" required>
-    </div> -->
 
-    <div>
-        <form>
-        <label for="projectName">Se projekt navne</label>
-        <select name="projectName" id="projectName">
+        <label for="projectName">Vælg projekt</label>
+        <select name="projectManagementId" id="projectName">
             <option value="" disabled selected>Se projekter</option>
-            <option th:each="project : ${projects}"
-                    th:value="${project.id}"
-                    th:text="${project.projectName}">
+            <option th:each="projectManagement : ${projects}"
+                    th:value="${projectManagement.projectManagementId}"
+                    th:text="${projectManagement.projectName}">
             </option>
         </select>
-        </form>
+
     </div>
 
 
