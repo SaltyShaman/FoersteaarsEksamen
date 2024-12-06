@@ -9,6 +9,9 @@ public class Employee {
         private Integer tasksId;  // FOREIGN KEY FOR TASKS, nullable
         private Integer calculatorTableId;  //FOREIGN KEY FOR PROJECT TOOL (calculator table), nullable
 
+    public Employee() {
+    }
+
         public Employee(int employeeId, String employeeName, Integer tasksId, Integer calculatorTableId) {
             this.employeeId = employeeId;
             this.employeeName = employeeName;
