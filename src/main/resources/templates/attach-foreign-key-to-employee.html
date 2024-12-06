@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/attachEmployeeToForeignKeyPost" method="post">
+
+    <p>Vælg ansat</p>
+
+    <select name="employee" id="employee">
+        <option value="" disabled selected>Vælg medarbejder</option>
+        <option th:each="employee : ${employees}"
+                th:value="${employee.employeeId}"
+                th:text="${employee.employeeName}">
+        </option>
+    </select>
+
+
+    <p>Vælg projektværktøj</p>>
+
+    <select name="calculatorName" id="calculator">
+        <option value="" disabled selected>Vælg projekt værktøj</option>
+        <option th:each="calculator : ${calculators}"
+                th:value="${calculator.calculatorTableId}"
+                th:text="${calculator.calculatorName}">
+        </option>
+    </select>
+
+    <button type="submit">Tilføj</button>
+</form>
+
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package org.example.foersteaarseksamen.services;
 
 import org.example.foersteaarseksamen.models.Calcemp;
 import org.example.foersteaarseksamen.models.Calculator;
+import org.example.foersteaarseksamen.models.Employee;
 import org.example.foersteaarseksamen.repositories.CalcempRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,17 @@ public class CalcempService {
 
     public Calcemp getCalcEmpDetails(String calculatorName) {
         return calcempRepository.getCalcEmpDetails(calculatorName);
+    }
+
+    public void attachEmployeeToCalculatorId(int employeeId, int calculatorTableId) {
+        calcempRepository.attachEmployeeToCalculatorTableId(employeeId, calculatorTableId);
+    }
+
+    public List<Employee> getAllEmployees() {
+        return calcempRepository.getAllEmployees();
+    }
+
+    public List<Calculator> getAllCalculators() {
+       return calcempRepository.getAllCalculators();
     }
 }

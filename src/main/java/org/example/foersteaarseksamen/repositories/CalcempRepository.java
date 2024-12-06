@@ -76,6 +76,23 @@ public class CalcempRepository {
         return calcEmp;
     }
 
+    public void attachEmployeeToCalculatorTableId(int employeeId, int calculatorTableId) {
+        String query = "UPDATE employee_table SET calculator_table_id = ? WHERE employee_id = ?";
+        jdbcTemplate.update(query, calculatorTableId, employeeId); // Corrected parameter order
+    }
+
+    public List<Employee> getAllEmployees() {
+        String query = "SELECT * FROM employee_table";
+        RowMapper rowmapper = new BeanPropertyRowMapper(Employee.class);
+        return jdbcTemplate.query(query, rowmapper);
+    }
+
+    public List<Calculator> getAllCalculators() {
+        String query = "SELECT * FROM calculator_table";
+        RowMapper rowmapper = new BeanPropertyRowMapper(Calculator.class);
+        return jdbcTemplate.query(query, rowmapper);
+    }
+
 
     //join statements
 

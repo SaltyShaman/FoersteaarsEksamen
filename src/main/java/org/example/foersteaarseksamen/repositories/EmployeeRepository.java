@@ -42,4 +42,11 @@ public class EmployeeRepository {
     }
 
 
+    /*
+    1: find en liste over alle calculators
+    2: set employee calculatortableid til en liste baseret på calculatornavn
+     */
+
+
+
 }
