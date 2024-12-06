@@ -29,9 +29,9 @@ public class EmployeeController {
     public String createEmployee(@RequestParam String employeeName,
                                  @RequestParam String workArea,
                                  @RequestParam String task,
-                                 @RequestParam double estimatedHoursPerEmployee,
-                                 @RequestParam Integer calculatorTableId) {
-        return "redirect:/calculator";
+                                 @RequestParam int estimatedHoursPerEmployee) {
+        employeeService.createEmployee(employeeName, workArea, task, estimatedHoursPerEmployee);
+        return "redirect:/selectAllEmployees";
     }
 
     @GetMapping("/calculator")
