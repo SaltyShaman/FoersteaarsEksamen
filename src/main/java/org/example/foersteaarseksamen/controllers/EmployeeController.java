@@ -43,7 +43,7 @@ public class EmployeeController {
     @GetMapping("/selectAllEmployees")
     public String selectAllEmployees(Model model) {
         model.addAttribute("employees", employeeService.ReadAllEmployees());
-        return "calculator-tool";
+       return "employee-overview";
     }
 
 }

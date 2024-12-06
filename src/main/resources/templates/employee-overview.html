@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>Navn på den ansatte</th>
+            <th>Arbejdsområde</th>
+            <th>Opgave</th>
+            <th>Estimerede timeantal</th>
+            <th>Tilknyttet lommeregner</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#lists.isEmpty(employees)}">
+            <td colspan="5" class="text-center">Ingen ansatte kunne findes</td>
+        </tr>
+        <!-- Thymeleaf loop to dynamically populate the table -->
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.employeeName}"></td>
+            <td th:text="${employee.workArea}"></td>
+            <td th:text="${employee.task}"></td>
+            <td th:text="${employee.estimatedHoursPerEmployee}"></td>
+            <td th:text="${employee.calculatorTableId}"></td>
+
+            <!--
+            <td>
+                <form action="/updateClient" method="get">
+                    <input type="hidden" name="clientEmail" th:value="${client.clientEmail}">
+                    <input type="hidden" name="clientCompany" th:value="${client.clientCompany}">
+                    <input type="hidden" name="clientName" th:value="${client.clientName}">
+                    <button type="submit" class="btn btn-outline-primary">Opdater</button>
+                </form>
+            </td>
+            -->
+            <!--
+            <td>
+                <form action="/removeClient" method="post">
+                    <input type="hidden" name="client_id" th:value="${client.client_id}">
+                    <button type="submit" class="btn btn-danger">Fjern</button>
+                </form>
+            </td>
+            -->
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
