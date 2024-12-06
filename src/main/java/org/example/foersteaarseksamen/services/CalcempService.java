@@ -38,6 +38,6 @@ public class CalcempService {
     }
 
     public List<Calculator> getAllCalculators() {
-       return calcempRepository.getAllCalculators();
+        return calcempRepository.getAllCalculators();
     }
 }

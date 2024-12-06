@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
 <form action="/attachEmployeeToForeignKeyPost" method="post">
-
     <p>Vælg ansat</p>
-
-    <select name="employee" id="employee">
+    <select name="employeeId" id="employee">
         <option value="" disabled selected>Vælg medarbejder</option>
         <option th:each="employee : ${employees}"
                 th:value="${employee.employeeId}"
@@ -18,10 +8,8 @@
         </option>
     </select>
 
-
-    <p>Vælg projektværktøj</p>>
-
-    <select name="calculatorName" id="calculator">
+    <p>Vælg projektværktøj</p>
+    <select name="calculatorTableId" id="calculator">
         <option value="" disabled selected>Vælg projekt værktøj</option>
         <option th:each="calculator : ${calculators}"
                 th:value="${calculator.calculatorTableId}"
@@ -31,7 +19,3 @@
 
     <button type="submit">Tilføj</button>
 </form>
-
-
-</body>
-</html>
