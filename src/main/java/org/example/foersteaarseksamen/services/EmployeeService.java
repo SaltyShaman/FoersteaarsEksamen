@@ -21,9 +21,9 @@ public class EmployeeService {
     read specific
      */
 
-    public void createEmployee(String employeeName, String workArea,
-                               String task, int estimatedHoursPerEmployee) {
-        employeeRepository.CreateEmployee(employeeName, workArea, task, estimatedHoursPerEmployee);
+    public void createEmployee(String employeeName,
+                               Integer tasksId, Integer calculatorTableId) {
+        employeeRepository.CreateEmployee(employeeName, tasksId, calculatorTableId);
     }
 
     public List<Employee> ReadAllEmployees() {

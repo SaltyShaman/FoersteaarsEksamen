@@ -51,19 +51,20 @@ public class CalcempRepository {
 
     //Inspired by ChatGPT dec 4
     public List<Employee> getEmployeeDetails(int calculatorTableId) {
-        String empSql = "SELECT employee_id, employee_name, work_area, task, estimated_work_hours_per_employee " +
+        String empSql = "SELECT employee_id, employee_name, tasks_id, calculator_table_id " +
                 "FROM employee_table WHERE calculator_table_id = ?";
 
         return jdbcTemplate.query(empSql, (rs, rowNum) -> {
-            Employee employee = new Employee();
-            employee.setEmployeeId(rs.getInt("employee_id"));
-            employee.setEmployeeName(rs.getString("employee_name"));
-            employee.setWorkArea(rs.getString("work_area"));
-            employee.setTask(rs.getString("task"));
-            employee.setEstimatedHoursPerEmployee(rs.getInt("estimated_work_hours_per_employee"));
-            return employee;
+            // Use the parameterized constructor
+            return new Employee(
+                    rs.getInt("employee_id"),
+                    rs.getString("employee_name"),
+                    rs.getInt("tasks_id"),
+                    rs.getInt("calculator_table_id")
+            );
         }, calculatorTableId);
     }
+
 
     public Calcemp getCalcEmpDetails(String calculatorName) {
         // Fetch client and project data

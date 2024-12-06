@@ -11,9 +11,7 @@
         <thead>
         <tr>
             <th>Navn på den ansatte</th>
-            <th>Arbejdsområde</th>
-            <th>Opgave</th>
-            <th>Estimerede timeantal</th>
+            <th>Opgaver</th>
             <th>Tilknyttet lommeregner</th>
 
         </tr>
@@ -25,9 +23,7 @@
         <!-- Thymeleaf loop to dynamically populate the table -->
         <tr th:each="employee : ${employees}">
             <td th:text="${employee.employeeName}"></td>
-            <td th:text="${employee.workArea}"></td>
-            <td th:text="${employee.task}"></td>
-            <td th:text="${employee.estimatedHoursPerEmployee}"></td>
+            <td th:text="${employee.tasksId}"></td>
             <td th:text="${employee.calculatorTableId}"></td>
 
 

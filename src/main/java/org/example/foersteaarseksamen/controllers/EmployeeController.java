@@ -27,12 +27,12 @@ public class EmployeeController {
      */
     @PostMapping("/createEmployeePost")
     public String createEmployee(@RequestParam String employeeName,
-                                 @RequestParam String workArea,
-                                 @RequestParam String task,
-                                 @RequestParam int estimatedHoursPerEmployee) {
-        employeeService.createEmployee(employeeName, workArea, task, estimatedHoursPerEmployee);
+                                 @RequestParam(required = false) Integer tasksId,
+                                 @RequestParam(required = false) Integer calculatorTableId) {
+        employeeService.createEmployee(employeeName, tasksId, calculatorTableId);
         return "redirect:/selectAllEmployees";
     }
+
 
     @GetMapping("/calculator")
     public String calculator(Model model) {
@@ -45,6 +45,8 @@ public class EmployeeController {
         model.addAttribute("employees", employeeService.ReadAllEmployees());
        return "employee-overview";
     }
+
+
 
 }
 
