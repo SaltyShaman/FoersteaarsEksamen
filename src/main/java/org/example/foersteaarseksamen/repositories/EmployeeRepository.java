@@ -2,10 +2,7 @@ package org.example.foersteaarseksamen.repositories;
 
 
 import org.example.foersteaarseksamen.models.Employee;
-import org.example.foersteaarseksamen.models.ProjectManagement;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,9 +20,9 @@ public class EmployeeRepository {
   */
 
     public void CreateEmployee(String employeeName, String workArea,
-                               String task, int estimatedHoursPerEmployee, Integer calculatorTableId) {
+                               String task, int estimatedHoursPerEmployee) {
         String query = "INSERT INTO employee_table (employee_name, work_area, task, estimated_work_hours_per_employee, calculator_table_id) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(query, employeeName, workArea, task, estimatedHoursPerEmployee, calculatorTableId);
+        jdbcTemplate.update(query, employeeName, workArea, task, estimatedHoursPerEmployee, null);
     }
 
 

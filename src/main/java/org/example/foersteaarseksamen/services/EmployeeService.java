@@ -2,7 +2,6 @@ package org.example.foersteaarseksamen.services;
 
 
 import org.example.foersteaarseksamen.models.Employee;
-import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.example.foersteaarseksamen.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +22,8 @@ public class EmployeeService {
      */
 
     public void createEmployee(String employeeName, String workArea,
-                               String task, int estimatedHoursPerEmployee, Integer calculatorTableId ) {
-        employeeRepository.CreateEmployee(employeeName, workArea, task, estimatedHoursPerEmployee, calculatorTableId);
+                               String task, int estimatedHoursPerEmployee) {
+        employeeRepository.CreateEmployee(employeeName, workArea, task, estimatedHoursPerEmployee);
     }
 
     public List<Employee> ReadAllEmployees() {

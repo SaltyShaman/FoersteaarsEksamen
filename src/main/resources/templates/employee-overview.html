@@ -30,6 +30,7 @@
             <td th:text="${employee.estimatedHoursPerEmployee}"></td>
             <td th:text="${employee.calculatorTableId}"></td>
 
+
             <!--
             <td>
                 <form action="/updateClient" method="get">
@@ -52,6 +53,13 @@
         </tbody>
     </table>
 </div>
+<form action="/createEmployee" method="get">
+    <button type="submit" class="btn btn-primary">Registrer ny ansat</button>
+</form>
+
+<form action="/" method="get">
+    <button type="submit">Indeks</button>
+</form>
 
 </body>
 </html>
