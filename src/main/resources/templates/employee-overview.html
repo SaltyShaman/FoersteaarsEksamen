@@ -31,30 +31,17 @@
             <td th:text="${employee.calculatorTableId}"></td>
 
 
-            <!--
-            <td>
-                <form action="/updateClient" method="get">
-                    <input type="hidden" name="clientEmail" th:value="${client.clientEmail}">
-                    <input type="hidden" name="clientCompany" th:value="${client.clientCompany}">
-                    <input type="hidden" name="clientName" th:value="${client.clientName}">
-                    <button type="submit" class="btn btn-outline-primary">Opdater</button>
-                </form>
-            </td>
-            -->
-            <!--
-            <td>
-                <form action="/removeClient" method="post">
-                    <input type="hidden" name="client_id" th:value="${client.client_id}">
-                    <button type="submit" class="btn btn-danger">Fjern</button>
-                </form>
-            </td>
-            -->
+
         </tr>
         </tbody>
     </table>
 </div>
 <form action="/createEmployee" method="get">
     <button type="submit" class="btn btn-primary">Registrer ny ansat</button>
+</form>
+
+<form action="attachEmployeeToForeignKey" method ="get">
+    <button type="submit">Tilknyt medarbejdere til et projekt</button>
 </form>
 
 <form action="/" method="get">
