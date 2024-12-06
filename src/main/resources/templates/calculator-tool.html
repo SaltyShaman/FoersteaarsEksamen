@@ -31,8 +31,16 @@
     <p th:text="${calcEmp.estimatedHoursPerEmployee}"></p>
 </div>
 -->
-<div>
-    <a href="/">Gå tilbage til hovedsiden</a>
-</div>
+
+<form action ="readAllCalculators" method ="get">
+    <button type="submit">Vis beregnere</button>
+</form>
+
+<form action="/" method="get">
+    <button type="submit">Gå tilbage til hovedsiden</button>
+
+</form>
+
+
 </body>
 </html>
