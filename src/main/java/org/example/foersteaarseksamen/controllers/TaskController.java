@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TaskController {
@@ -21,8 +22,9 @@ public class TaskController {
     }
 
     @PostMapping("/createTaskPost")
-    public String createTaskPost(@ModelAttribute Task task) {
-        taskService.createTask(task);
+    public String createTaskPost(@RequestParam String taskName,
+                                 @RequestParam Integer estimatedWorkHoursPerTask) {
+        taskService.createTask(taskName, estimatedWorkHoursPerTask);
 
         return "redirect:/seeAllTasks";
     }

@@ -19,10 +19,11 @@ public class TaskRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void createTask(Task task) {
+    public void createTask(String taskName, Integer estimatedWorkHoursPerTask) {
         String query = "INSERT INTO tasks (task_name, estimated_work_hours_per_task) VALUES (?, ?)";
-        jdbcTemplate.update(query, task.getTaskName(), task.getEstimatedWorkHoursPerTask());
+        jdbcTemplate.update(query, taskName, estimatedWorkHoursPerTask);
     }
+
 
 
 

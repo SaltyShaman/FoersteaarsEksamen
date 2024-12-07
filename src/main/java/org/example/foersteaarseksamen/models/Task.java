@@ -3,12 +3,12 @@ package org.example.foersteaarseksamen.models;
 public class Task {
     private int taskId; // Primary key
     private String taskName;
-    private int estimatedWorkHoursPerTask;
+    private Integer estimatedWorkHoursPerTask;
 
     public Task() {
     }
 
-    public Task(int taskId, String taskName, int estimatedWorkHoursPerTask) {
+    public Task(int taskId, String taskName, Integer estimatedWorkHoursPerTask) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.estimatedWorkHoursPerTask = estimatedWorkHoursPerTask;
@@ -32,11 +32,11 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public int getEstimatedWorkHoursPerTask() {
+    public Integer getEstimatedWorkHoursPerTask() {
         return estimatedWorkHoursPerTask;
     }
 
-    public void setEstimatedWorkHoursPerTask(int estimatedWorkHoursPerTask) {
+    public void setEstimatedWorkHoursPerTask(Integer estimatedWorkHoursPerTask) {
         this.estimatedWorkHoursPerTask = estimatedWorkHoursPerTask;
     }
 

@@ -16,8 +16,8 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public void createTask(Task task) {
-        taskRepository.createTask(task);
+    public void createTask(String taskName, Integer estimatedWorkHoursPerTask) {
+        taskRepository.createTask(taskName, estimatedWorkHoursPerTask);
     }
 
     public List<Task> getAllTasks() {
