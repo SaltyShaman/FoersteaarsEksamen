@@ -20,9 +20,7 @@
 <ul>
     <li th:each="employee : ${calcEmp.employees}">
         Navn: <span th:text="${employee.employeeName}"></span>,
-        Arbejdsområde: <span th:text="${employee.workArea}"></span>,
-        Opgave: <span th:text="${employee.task}"></span>,
-        Estimerede Timer: <span th:text="${employee.estimatedHoursPerEmployee}"></span>
+        Opgave: <span th:text="${employee.tasks}"></span>,
     </li>
 </ul>
 <!--
