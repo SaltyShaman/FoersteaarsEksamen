@@ -55,7 +55,7 @@ public class CalcempRepository {
     public List<Employee> getEmployeeDetails(int calculatorTableId) {
         String empSql = """
         SELECT e.employee_id, e.employee_name, e.calculator_table_id,
-               t.tasks_id, t.task, t.estimated_work_hours_per_task
+               t.tasks_id, t.task_name, t.estimated_work_hours_per_task
         FROM employee_table e
         LEFT JOIN employee_tasks et ON e.employee_id = et.employee_id
         LEFT JOIN tasks t ON et.tasks_id = t.tasks_id
@@ -130,18 +130,5 @@ public class CalcempRepository {
         RowMapper rowmapper = new BeanPropertyRowMapper(Calculator.class);
         return jdbcTemplate.query(query, rowmapper);
     }
-
-
-    //join statements
-
-    /*
-    mål:
-
-    4) læse hvem der er forbundet med hvilke calcualtor tabeller per id
-    5) tilføje employee til calculator tabels
-
-
-
-     */
 
 }

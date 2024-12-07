@@ -8,18 +8,16 @@
 
 <h1>Tilføj en ny opgave</h1>
 
-
-// parameters: name + estimatedtimepertask
 <form action="/createTaskPost" method="POST">
-
-    <label for="taskName">Task Name:</label>
+    <label for="taskName">Opgave:</label>
     <input type="text" id="taskName" name="taskName" required>
 
-    <label for="estimatedTimePerTask">Estimated Work Hours:</label>
-    <input type="number" id="estimatedTimePerTask" name="estimatedTimePerTask" required>
+    <label for="estimatedWorkHoursPerTask">Antal timer:</label>
+    <input type="number" id="estimatedWorkHoursPerTask" name="estimatedWorkHoursPerTask" required>
 
     <button type="submit">Tilføj</button>
 </form>
+
 
 </body>
 </html>

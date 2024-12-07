@@ -20,15 +20,15 @@
 <ul>
     <li th:each="employee : ${calcEmp.employees}">
         Navn: <span th:text="${employee.employeeName}"></span>,
-        Opgave: <span th:text="${employee.tasks}"></span>,
+        Opgaver:
+        <ul>
+            <li th:each="task : ${employee.tasks}">
+                <span th:text="${task.taskName}"></span> (Tid: <span th:text="${task.estimatedWorkHoursPerTask}"></span> timer)
+            </li>
+        </ul>
     </li>
 </ul>
-<!--
-<div>
-    <h2>Tidsestimat per ansat</h2>
-    <p th:text="${calcEmp.estimatedHoursPerEmployee}"></p>
-</div>
--->
+
 
 <form action ="readAllCalculators" method ="get">
     <button type="submit">Vis beregnere</button>
@@ -36,6 +36,10 @@
 
 <form action="attachEmployeeToForeignKey" method ="get">
     <button type="submit">Tilknyt medarbejdere til et projekt</button>
+</form>
+
+<form action="createTask" method ="get">
+    <button type="submit">Opret opgave</button>
 </form>
 
 <form action="/" method="get">
