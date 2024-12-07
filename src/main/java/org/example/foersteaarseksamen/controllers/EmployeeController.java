@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.SQLException;
+
 @Controller
 public class EmployeeController {
 
@@ -27,9 +29,8 @@ public class EmployeeController {
      */
     @PostMapping("/createEmployeePost")
     public String createEmployee(@RequestParam String employeeName,
-                                 @RequestParam(required = false) Integer tasksId,
                                  @RequestParam(required = false) Integer calculatorTableId) {
-        employeeService.createEmployee(employeeName, tasksId, calculatorTableId);
+        employeeService.createEmployee(employeeName,  calculatorTableId);
         return "redirect:/selectAllEmployees";
     }
 
@@ -43,7 +44,7 @@ public class EmployeeController {
     @GetMapping("/selectAllEmployees")
     public String selectAllEmployees(Model model) {
         model.addAttribute("employees", employeeService.ReadAllEmployees());
-       return "employee-overview";
+        return "employee-overview";
     }
 
 

@@ -1,15 +1,17 @@
 package org.example.foersteaarseksamen.repositories;
 
-import org.example.foersteaarseksamen.models.Calcemp;
-import org.example.foersteaarseksamen.models.Calculator;
-import org.example.foersteaarseksamen.models.Client;
-import org.example.foersteaarseksamen.models.Employee;
+import org.example.foersteaarseksamen.models.*;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Repository
@@ -51,19 +53,54 @@ public class CalcempRepository {
 
     //Inspired by ChatGPT dec 4
     public List<Employee> getEmployeeDetails(int calculatorTableId) {
-        String empSql = "SELECT employee_id, employee_name, tasks_id, calculator_table_id " +
-                "FROM employee_table WHERE calculator_table_id = ?";
+        String empSql = """
+        SELECT e.employee_id, e.employee_name, e.calculator_table_id,
+               t.tasks_id, t.task, t.estimated_work_hours_per_task
+        FROM employee_table e
+        LEFT JOIN employee_tasks et ON e.employee_id = et.employee_id
+        LEFT JOIN tasks t ON et.tasks_id = t.tasks_id
+        WHERE e.calculator_table_id = ?
+    """;
 
-        return jdbcTemplate.query(empSql, (rs, rowNum) -> {
-            // Use the parameterized constructor
-            return new Employee(
-                    rs.getInt("employee_id"),
-                    rs.getString("employee_name"),
-                    rs.getInt("tasks_id"),
-                    rs.getInt("calculator_table_id")
-            );
-        }, calculatorTableId);
+        Map<Integer, Employee> employeeMap = new HashMap<>();
+
+        try {
+            jdbcTemplate.query(empSql, rs -> {
+                int employeeId = rs.getInt("employee_id");
+
+                // Retrieve or create the employee object
+                Employee employee = employeeMap.computeIfAbsent(employeeId, id -> {
+                    try {
+                        return new Employee(
+                                id,
+                                rs.getString("employee_name"),
+                                rs.getInt("calculator_table_id"),
+                                new ArrayList<>()
+                        );
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+                // Add tasks if they exist
+                int taskId = rs.getInt("tasks_id");
+                if (!rs.wasNull()) {
+                    Task task = new Task(
+                            taskId,
+                            rs.getString("task"),
+                            rs.getInt("estimated_work_hours_per_task")
+                    );
+                    employee.getTasks().add(task);
+                }
+            }, calculatorTableId);
+        } catch (DataAccessException e) {
+            e.printStackTrace(); // Log or handle the exception as needed
+        }
+
+        return new ArrayList<>(employeeMap.values());
     }
+
+
 
 
     public Calcemp getCalcEmpDetails(String calculatorName) {

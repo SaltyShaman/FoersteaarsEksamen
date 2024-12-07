@@ -5,6 +5,7 @@ import org.example.foersteaarseksamen.models.Employee;
 import org.example.foersteaarseksamen.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Service
@@ -21,9 +22,8 @@ public class EmployeeService {
     read specific
      */
 
-    public void createEmployee(String employeeName,
-                               Integer tasksId, Integer calculatorTableId) {
-        employeeRepository.CreateEmployee(employeeName, tasksId, calculatorTableId);
+    public void createEmployee(String employeeName, Integer calculatorTableId) {
+        employeeRepository.CreateEmployee(employeeName, calculatorTableId);
     }
 
     public List<Employee> ReadAllEmployees() {
