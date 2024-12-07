@@ -20,7 +20,7 @@
                     <!-- Display tasks if they exist -->
                     <li th:each="task : ${employee.tasks}" th:if="${employee.tasks.size() > 0}">
                         <span th:text="${task.taskId}">Task ID</span> -
-                        <span th:text="${task.task}">Task Name</span> -
+                        <span th:text="${task.taskName}">Task Name</span> -
                         <span th:text="${task.estimatedWorkHoursPerTask}">Estimated Work Hours</span>
                     </li>
                     <!-- Default message if no tasks -->
