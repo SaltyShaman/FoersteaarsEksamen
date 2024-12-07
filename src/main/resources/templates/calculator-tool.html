@@ -2,50 +2,81 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator Tool for Project Leader</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
-<h1>Projekt værktøj</h1>
+<body class="bg-light">
+<header class="bg-dark text-white text-center py-4">
+    <h1>Projekt Værktøj</h1>
+    <p class="lead">En beregner til effektiv projektstyring</p>
+</header>
 
-<h2>Kunde Information</h2>
-<p>Virksomhed: <span th:text="${calcEmp.clientCompany}"></span></p>
-<p>Navn: <span th:text="${calcEmp.clientName}"></span></p>
+<div class="container my-5">
+    <!-- Client Information -->
+    <section class="mb-4">
+        <h2 class="text-primary">Kunde Information</h2>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <p><strong>Virksomhed:</strong> <span th:text="${calcEmp.clientCompany}"></span></p>
+                <p><strong>Navn:</strong> <span th:text="${calcEmp.clientName}"></span></p>
+            </div>
+        </div>
+    </section>
 
-<h2>Projekt Information</h2>
-<p>Projekt Navn: <span th:text="${calcEmp.projectName}"></span></p>
-<p>Projektleder: <span th:text="${calcEmp.projectLeader}"></span></p>
+    <!-- Project Information -->
+    <section class="mb-4">
+        <h2 class="text-primary">Projekt Information</h2>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <p><strong>Projekt Navn:</strong> <span th:text="${calcEmp.projectName}"></span></p>
+                <p><strong>Projektleder:</strong> <span th:text="${calcEmp.projectLeader}"></span></p>
+            </div>
+        </div>
+    </section>
 
-<h2>Medarbejdere</h2>
-<ul>
-    <li th:each="employee : ${calcEmp.employees}">
-        Navn: <span th:text="${employee.employeeName}"></span>,
-        Opgaver:
-        <ul>
-            <li th:each="task : ${employee.tasks}">
-                <span th:text="${task.taskName}"></span> (Tid: <span th:text="${task.estimatedWorkHoursPerTask}"></span> timer)
-            </li>
-        </ul>
-    </li>
-</ul>
+    <!-- Employees Section -->
+    <section class="mb-4">
+        <h2 class="text-primary">Medarbejdere</h2>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="employee : ${calcEmp.employees}">
+                        <strong>Navn:</strong> <span th:text="${employee.employeeName}"></span>
+                        <ul class="mt-2">
+                            <li th:each="task : ${employee.tasks}">
+                                <strong>Opgave:</strong> <span th:text="${task.taskName}"></span>
+                                (<strong>Tid:</strong> <span th:text="${task.estimatedWorkHoursPerTask}"></span> timer)
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
+    <!-- Buttons for Actions -->
+    <div class="d-flex justify-content-between">
+        <form action="readAllCalculators" method="get">
+            <button type="submit" class="btn btn-primary">Vis Beregnere</button>
+        </form>
+        <form action="attachEmployeeToForeignKey" method="get">
+            <button type="submit" class="btn btn-success">Tilknyt Medarbejdere</button>
+        </form>
+        <form action="createTask" method="get">
+            <button type="submit" class="btn btn-warning">Opret Opgave</button>
+        </form>
+        <form action="/" method="get">
+            <button type="submit" class="btn btn-secondary">Gå Tilbage</button>
+        </form>
+    </div>
+</div>
 
-<form action ="readAllCalculators" method ="get">
-    <button type="submit">Vis beregnere</button>
-</form>
-
-<form action="attachEmployeeToForeignKey" method ="get">
-    <button type="submit">Tilknyt medarbejdere til et projekt</button>
-</form>
-
-<form action="createTask" method ="get">
-    <button type="submit">Opret opgave</button>
-</form>
-
-<form action="/" method="get">
-    <button type="submit">Gå tilbage til hovedsiden</button>
-</form>
-
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2024 Projektværktøj. Alle rettigheder forbeholdes.</p>
+</footer>
 
 </body>
 </html>
