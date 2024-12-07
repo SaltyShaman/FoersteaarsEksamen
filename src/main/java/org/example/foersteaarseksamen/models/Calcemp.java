@@ -7,14 +7,6 @@ public class Calcemp {
     // Employee is treated as list of objects to be fetched from the SQL tabel
     private List <Employee> employees;
 
-    /*
-    Variables:
-    employee_name
-    work_area
-    task
-    estimated_work_hours_per_employee INTEGER
-    calculator_table_id INTEGER and foreign key
-     */
 
     // Client variables
     private String clientCompany;
@@ -33,7 +25,6 @@ public class Calcemp {
     }
 
     // Parameterized constructor
-// Corrected parameterized constructor
     public Calcemp(List<Employee> employees, String clientCompany, String clientName,
                    String projectName, String projectLeader, String calculatorName, int calculatorTableId) {
         this.employees = employees;

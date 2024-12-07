@@ -24,4 +24,8 @@ public class TaskService {
        return taskRepository.getAllTasks();
     }
 
+    public void deleteTask(int taskId) {
+        taskRepository.deleteTask(taskId);
+    }
+
 }

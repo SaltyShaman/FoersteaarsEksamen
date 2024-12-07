@@ -22,12 +22,7 @@ public class CalculatorController {
                                    @RequestParam int client_id,
                                    @RequestParam int projectManagementId) {
         calculatorService.createCalculator(calculatorName, client_id, projectManagementId);
-        return "redirect:/calculatorTool";
-    }
-
-    @GetMapping("/calculatorTool")
-    public String calculatorTool(Model model) {
-        return "calculator-tool";
+        return "redirect:/readAllCalculatorsController";
     }
 
     @GetMapping("/createCalculator")
@@ -37,7 +32,11 @@ public class CalculatorController {
         return "register-new-calculator";
     }
 
-
+    @GetMapping("/readAllCalculatorsController")
+    public String readAllCalculators(Model model) {
+        model.addAttribute("calculators", calculatorService.findAllCalculators());
+        return "calculator-sellector";
+    }
 
 
 }

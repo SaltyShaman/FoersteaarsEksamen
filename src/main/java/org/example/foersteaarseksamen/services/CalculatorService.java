@@ -1,5 +1,6 @@
 package org.example.foersteaarseksamen.services;
 
+import org.example.foersteaarseksamen.models.Calculator;
 import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.example.foersteaarseksamen.models.Client;
 import org.example.foersteaarseksamen.repositories.CalculatorRepository;
@@ -37,4 +38,7 @@ public class CalculatorService {
         return calculatorRepository.getAllProjects();
     }
 
+    public List<Calculator> findAllCalculators() {
+        return calculatorRepository.findAllCalculators();
+    }
 }

@@ -24,18 +24,21 @@ public class TaskRepository {
         jdbcTemplate.update(query, taskName, estimatedWorkHoursPerTask);
     }
 
-
-
-
-    //singlular use without seeing attached employees
+    //without seeing attached employees
     public List<Task> getAllTasks() {
         String query = "SELECT * FROM tasks";
         RowMapper rowMapper1 = new BeanPropertyRowMapper(Task.class);
         return jdbcTemplate.query(query, rowMapper1);
     }
 
+    public void deleteTask(int taskId) {
+        String query = "DELETE FROM tasks WHERE tasks_id = ?";
+        jdbcTemplate.update(query, taskId);
+    }
+
+
     /*
-    mål:, update task, read task, tilknyt task til employee
+    mål:, delete task, tilknyt task til employee
 
      */
 }
