@@ -2,31 +2,71 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sellect calculator data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vælg Lommeregner Data</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    h1 {
+        font-size: 2.5rem;
+        color: #ff6f00;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .card {
+        max-width: 600px; /* Adjust the width */
+        margin: 0 auto; /* Center the card horizontally */
+    }
+
+    .btn-group {
+        gap: 10px; /* Add space between buttons */
+    }
+</style>
 <body>
 
-<h1>Vælg lommeregner for at se data</h1>
-<!--Form for sellecting calculator -->
+<header>
+    <h1>Se detaljer for projekt</h1>
+</header>
 
-<form action="/getCalculatorData" method="post">
-    <label for="calculator">Vælg lommeregner:</label>
-    <select name="calculatorName" id="calculator">
-        <option value="" disabled selected>Vælg lommeregner</option>
-        <option th:each="calculator : ${calculators}"
-                th:value="${calculator.calculatorName}"
-                th:text="${calculator.calculatorName}">
-        </option>
-    </select>
+<div class="container mt-5">
+    <!-- Form Section -->
+    <section class="card shadow-sm p-4 mb-5">
+        <form action="/getCalculatorData" method="post">
+            <!-- Dropdown for Selecting Calculator -->
+            <div class="mb-4">
+                <label for="calculator" class="form-label"><strong>Vælg lommeregner:</strong></label>
+                <select name="calculatorName" id="calculator" class="form-select">
+                    <option value="" disabled selected>Vælg lommeregner</option>
+                    <option th:each="calculator : ${calculators}"
+                            th:value="${calculator.calculatorName}"
+                            th:text="${calculator.calculatorName}"></option>
+                </select>
+            </div>
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-center ">
+                <button type="submit" class="btn btn-primary">Se Datasæt</button>
+            </div>
+        </form>
+        <div class="d-flex justify-content-center mt-3 btn-group">
+            <form action="/" method="get">
+                <button type="submit" class="btn btn-secondary">Gå Tilbage Til Hovedsiden</button>
+            </form>
+        </div>
+    </section>
+</div>
 
-    <form>
-    <   button type="submit">Se datasæt</button>
-    </form>
+<footer>
+    <p>&copy; 2024 Projektværktøj. Alle rettigheder forbeholdes.</p>
+</footer>
 
-    <form action="/" method="get">
-        <button type="submit">Gå tilbage til hovedsiden</button>
-    </form>
-
-</form>
 </body>
 </html>
