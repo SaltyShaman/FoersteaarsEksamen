@@ -25,20 +25,32 @@ public class EmployeeRepository {
   */
 
     //Employeees are created without assignd foreign keys
-    public void CreateEmployee(String employeeName,  Integer calculatorTableId) {
+    public void CreateEmployee(String employeeName, Integer calculatorTableId) {
         String query = "INSERT INTO employee_table (employee_name, calculator_table_id) VALUES (?, ?)";
-        jdbcTemplate.update(query, employeeName,  calculatorTableId);
+        jdbcTemplate.update(query, employeeName, calculatorTableId);
     }
 
     public List<Employee> ReadAllEmployees() {
-        // Query to retrieve data from the database
+        // Corrected SQL query to retrieve data from the database
         String query = """
-        SELECT e.employee_id, e.employee_name, e.calculator_table_id,
-               t.tasks_id, t.task, t.estimated_work_hours_per_task
-        FROM employee_table e
-        LEFT JOIN employee_tasks et ON e.employee_id = et.employee_id
-        LEFT JOIN tasks t ON et.tasks_id = t.tasks_id
-    """;
+                    SELECT 
+                        e.employee_id, 
+                        e.employee_name, 
+                        e.calculator_table_id,
+                        t.tasks_id, 
+                        t.task_name, 
+                        t.estimated_work_hours_per_task
+                    FROM 
+                        employee_table e
+                    LEFT JOIN 
+                        calculator_table c ON e.calculator_table_id = c.calculator_table_id
+                    LEFT JOIN 
+                        project_management p ON c.project_management_id = p.project_management_Id
+                    LEFT JOIN 
+                        employee_tasks et ON e.employee_id = et.employee_id
+                    LEFT JOIN 
+                        tasks t ON et.tasks_id = t.tasks_id
+                """;
 
         // Fetch employee data from the database
         List<Map<String, Object>> rows = fetchEmployeeData(query);
@@ -49,7 +61,6 @@ public class EmployeeRepository {
         // Return the list of employees
         return new ArrayList<>(employeeMap.values());
     }
-
 
     private List<Map<String, Object>> fetchEmployeeData(String query) {
         try {
@@ -83,7 +94,7 @@ public class EmployeeRepository {
                 if (taskId != null) {
                     Task task = new Task(
                             taskId,
-                            (String) row.get("task"),
+                            (String) row.get("task_name"),  // Fixed column name
                             (Integer) row.get("estimated_work_hours_per_task")  // Cast to Integer
                     );
                     employee.getTasks().add(task);
@@ -92,18 +103,6 @@ public class EmployeeRepository {
         }
 
         return employeeMap;
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -24,11 +24,18 @@ public class TaskController {
     public String createTaskPost(@ModelAttribute Task task) {
         taskService.createTask(task);
 
-        return "redirect:/seeAllTasks"; // yet to be made
+        return "redirect:/seeAllTasks";
     }
 
     @GetMapping("/createTask")
     public String createTask(Model model) {
          return "create-task";
     }
+
+    @GetMapping("/seeAllTasks")
+    public String seeAllTasks(Model model) {
+        model.addAttribute("tasks", taskService.getAllTasks());
+        return "see-all-tasks";
+    }
+
 }
