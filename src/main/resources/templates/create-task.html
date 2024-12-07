@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create task</title>
+</head>
+<body>
+
+<h1>Tilføj en ny opgave</h1>
+
+
+// parameters: name + estimatedtimepertask
+<form action="/createTaskPost" method="POST">
+
+    <label for="taskName">Task Name:</label>
+    <input type="text" id="taskName" name="taskName" required>
+
+    <label for="estimatedTimePerTask">Estimated Work Hours:</label>
+    <input type="number" id="estimatedTimePerTask" name="estimatedTimePerTask" required>
+
+    <button type="submit">Tilføj</button>
+</form>
+
+</body>
+</html>

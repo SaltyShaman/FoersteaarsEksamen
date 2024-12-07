@@ -5,18 +5,17 @@ public class Task {
     private String taskName;
     private int estimatedWorkHoursPerTask;
 
-    // Constructor
+    public Task() {
+    }
+
     public Task(int taskId, String taskName, int estimatedWorkHoursPerTask) {
         this.taskId = taskId;
         this.taskName = taskName;
         this.estimatedWorkHoursPerTask = estimatedWorkHoursPerTask;
     }
 
-    // No-argument constructor
-    public Task() {
-    }
 
-    // Getters and setters
+
     public int getTaskId() {
         return taskId;
     }
