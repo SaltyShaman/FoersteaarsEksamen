@@ -21,12 +21,7 @@ public class CalculatorRepository {
     }
 
 
-    /* list of operations:
-        Create (MVP)
-        1: fetch client ID
-        2: fetch project management ID
-        3: create
-    */
+
 
     //inspired by ChatGPT dec 1 -> reconfigured to only look for company name
     public int getClientId(String clientCompany) {
