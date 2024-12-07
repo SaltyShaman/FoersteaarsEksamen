@@ -21,10 +21,10 @@ public class TaskService {
     }
 
     public List<Task> getAllTasks() {
-       return taskRepository.getAllTasks();
+        return taskRepository.getAllTasks();
     }
 
-    public void deleteTask(int taskId) {
+    public void deleteTask(Integer taskId) {
         taskRepository.deleteTask(taskId);
     }
 

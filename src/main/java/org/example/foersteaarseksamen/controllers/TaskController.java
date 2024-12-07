@@ -41,7 +41,7 @@ public class TaskController {
     }
 
     @PostMapping("/deleteTask")
-    public String deleteTask(@RequestParam int taskId) {
+    public String deleteTask(@RequestParam Integer taskId) {
 
         taskService.deleteTask(taskId);
 

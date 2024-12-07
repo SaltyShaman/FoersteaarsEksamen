@@ -18,6 +18,7 @@
             <tr>
                 <th>Opgave navn</th>
                 <th>Opgavens tid</th>
+                <th>Opgave ID</th>
                 <th>Slet</th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
             <tr th:each="task : ${tasks}">
                 <td th:text="${task.taskName}"></td>
                 <td th:text="${task.estimatedWorkHoursPerTask}"></td>
+                <td th:text="${task.taskId}"></td>
                 <td>
                     <form action="/deleteTask" method="post">
                         <input type="hidden" name="taskId" th:value="${task.taskId}">
