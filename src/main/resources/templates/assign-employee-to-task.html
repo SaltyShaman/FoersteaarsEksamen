@@ -20,13 +20,15 @@
     </select>
 
     <label for="task">Vælg opgave:</label>
-    <select name="taskName" id="task">
-            <option value="" disabled selected>Vælg opgave</option>
-            <option th:each="task : ${tasks}"
-                    th:value="${task.taskId}"
-                    th:text="${task.taskName}">
-            </option>
+    <select name="taskId" id="task">
+        <option value="" disabled selected>Vælg opgave</option>
+        <option th:each="task : ${tasks}"
+                th:value="${task.taskId}"
+                th:text="${task.taskName}">
+        </option>
     </select>
+
+
     <button type="submit">Tilføj</button>
 </form>
 
