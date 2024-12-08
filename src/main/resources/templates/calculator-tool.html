@@ -16,6 +16,19 @@
 <p>Projekt Navn: <span th:text="${calcEmp.projectName}"></span></p>
 <p>Projektleder: <span th:text="${calcEmp.projectLeader}"></span></p>
 
+<h2>Subprojekter</h2>
+<ul>
+    <li th:each="entry : ${subprojects}">
+        <strong th:text="${entry.key.subprojectName}"></strong>
+        <ul>
+            <li th:each="employee : ${entry.value}">
+                Medarbejder: <span th:text="${employee.employeeName}"></span>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
 <h2>Medarbejdere</h2>
 <ul>
     <li th:each="employee : ${calcEmp.employees}">
