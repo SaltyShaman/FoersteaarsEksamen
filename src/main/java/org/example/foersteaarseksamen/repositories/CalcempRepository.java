@@ -87,7 +87,7 @@ public class CalcempRepository {
                 if (!rs.wasNull()) {
                     Task task = new Task(
                             taskId,
-                            rs.getString("task"),
+                            rs.getString("task_name"),
                             rs.getInt("estimated_work_hours_per_task")
                     );
                     employee.getTasks().add(task);

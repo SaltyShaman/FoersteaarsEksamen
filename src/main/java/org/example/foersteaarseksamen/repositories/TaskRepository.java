@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -24,18 +26,31 @@ public class TaskRepository {
         jdbcTemplate.update(query, taskName, estimatedWorkHoursPerTask);
     }
 
-
-
-
-    //singlular use without seeing attached employees
+    //without seeing attached employees
     public List<Task> getAllTasks() {
-        String query = "SELECT * FROM tasks";
-        RowMapper rowMapper1 = new BeanPropertyRowMapper(Task.class);
-        return jdbcTemplate.query(query, rowMapper1);
+        String query = "SELECT tasks_id, task_name, estimated_work_hours_per_task FROM tasks";
+
+        // Directly map the result set to Task objects using RowMapper
+        return jdbcTemplate.query(query, new RowMapper<Task>() {
+            @Override
+            public Task mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Task(
+                        rs.getInt("tasks_id"),
+                        rs.getString("task_name"),
+                        rs.getInt("estimated_work_hours_per_task")
+                );
+            }
+        });
     }
 
+    public void deleteTask(Integer taskId) {
+        String query = "DELETE FROM tasks WHERE tasks_id = ?";
+        jdbcTemplate.update(query, taskId);
+    }
+
+
     /*
-    mål:, update task, read task, tilknyt task til employee
+    mål:, delete task, tilknyt task til employee
 
      */
 }

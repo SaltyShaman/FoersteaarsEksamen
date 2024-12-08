@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign employee to task</title>
+</head>
+<body>
+
+<h1>Tilføj medarbejder til en opgave</h1>
+
+<form action="/assignEmployeeToTaskPost" method="post">
+
+    <label for="employee">Vælg medarbejder:</label>
+    <select name="employeeId" id="employee">
+        <option value="" disabled selected>Vælg medarbejder</option>
+        <option th:each="employee : ${employees}"
+                th:value="${employee.employeeId}"
+                th:text="${employee.employeeName}">
+        </option>
+    </select>
+
+    <label for="task">Vælg opgave:</label>
+    <select name="taskId" id="task">
+        <option value="" disabled selected>Vælg opgave</option>
+        <option th:each="task : ${tasks}"
+                th:value="${task.taskId}"
+                th:text="${task.taskName}">
+        </option>
+    </select>
+
+
+    <button type="submit">Tilføj</button>
+</form>
+
+</body>
+</html>

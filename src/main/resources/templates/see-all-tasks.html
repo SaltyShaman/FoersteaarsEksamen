@@ -2,42 +2,61 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>See all tasks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se all opgaver</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
+<div class="container mt-5">
+    <h1 class="text-center">Se alle opgaver for hele databasen</h1>
 
-<h1>Se all opgaver for hele databasen</h1>
+    <div class="table-responsive mt-4">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Opgave navn</th>
+                <th>Opgavens tid</th>
+                <th>Opgave ID</th>
+                <th>Slet</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${#lists.isEmpty(tasks)}">
+                <td colspan="3" class="text-center">Ingen opgaver kunne findes</td>
+            </tr>
+            <!-- Thymeleaf loop to dynamically populate the table -->
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.taskName}"></td>
+                <td th:text="${task.estimatedWorkHoursPerTask}"></td>
+                <td th:text="${task.taskId}"></td>
+                <td>
+                    <form action="/deleteTask" method="post">
+                        <input type="hidden" name="taskId" th:value="${task.taskId}">
+                        <button type="submit" class="btn btn-danger btn-sm">Slet</button>
+                    </form>
 
-<div class="table-responsive">
-    <table class="table table-striped table-bordered">
-        <thead>
-        <tr>
-            <th>Opgave navn</th>
-            <th>Opgavens tid</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:if="${#lists.isEmpty(tasks)}">
-            <td colspan="5" class="text-center">Ingen opgaver kunne findes</td>
-        </tr>
-        <!-- Thymeleaf loop to dynamically populate the table -->
-        <tr th:each="task : ${tasks}">
-            <td th:text="${task.taskName}"></td>
-            <td th:text="${task.estimatedWorkHoursPerTask}"></td>
-            <td>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-        </tr>
-        </tbody>
-    </table>
+    <div class="d-flex justify-content-between">
+        <form action="createTask" method="get">
+            <button type="submit" class="btn btn-primary">Opret opgave</button>
+        </form>
+
+        <form action="assignEmployeeToTask" method="get">
+            <button type="submit" class="btn btn-primary">Tildel opgave til medarbejder</button>
+        </form>
+
+        <form action="/" method="get">
+            <button type="submit" class="btn btn-secondary">Indeks</button>
+        </form>
+    </div>
 </div>
 
-<form action="createTask" method ="get">
-    <button type="submit">Opret opgave</button>
-</form>
-
-<form action="/" method="get">
-    <button type="submit">Indeks</button>
-</form>
 </body>
 </html>

@@ -19,9 +19,9 @@
                 <ul>
                     <!-- Display tasks if they exist -->
                     <li th:each="task : ${employee.tasks}" th:if="${employee.tasks.size() > 0}">
-                        <span th:text="${task.taskId}">Task ID</span> -
-                        <span th:text="${task.task}">Task Name</span> -
-                        <span th:text="${task.estimatedWorkHoursPerTask}">Estimated Work Hours</span>
+                        <span th:text="${task.taskId}">Opgave ID</span> -
+                        <span th:text="${task.taskName}">Opgave navn</span> -
+                        <span th:text="${task.estimatedWorkHoursPerTask}">Formodede antal timer</span>
                     </li>
                     <!-- Default message if no tasks -->
                     <li th:if="${employee.tasks.size() == 0}">Ingen opgaver</li>

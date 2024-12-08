@@ -1,6 +1,7 @@
 package org.example.foersteaarseksamen.repositories;
 
 
+import org.example.foersteaarseksamen.models.Calculator;
 import org.example.foersteaarseksamen.models.Client;
 import org.example.foersteaarseksamen.models.ProjectManagement;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -20,12 +21,7 @@ public class CalculatorRepository {
     }
 
 
-    /* list of operations:
-        Create (MVP)
-        1: fetch client ID
-        2: fetch project management ID
-        3: create
-    */
+
 
     //inspired by ChatGPT dec 1 -> reconfigured to only look for company name
     public int getClientId(String clientCompany) {
@@ -53,6 +49,12 @@ public class CalculatorRepository {
     public List<ProjectManagement> getAllProjects() {
         String query = "SELECT * FROM project_management";
         RowMapper rowmapper = new BeanPropertyRowMapper(ProjectManagement.class);
+        return jdbcTemplate.query(query, rowmapper);
+    }
+
+    public List<Calculator> findAllCalculators() {
+        String query = "SELECT * FROM calculator_table";
+        RowMapper rowmapper = new BeanPropertyRowMapper(Calculator.class);
         return jdbcTemplate.query(query, rowmapper);
     }
 }

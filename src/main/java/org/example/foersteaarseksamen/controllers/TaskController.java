@@ -40,4 +40,13 @@ public class TaskController {
         return "see-all-tasks";
     }
 
+    @PostMapping("/deleteTask")
+    public String deleteTask(@RequestParam Integer taskId) {
+
+        taskService.deleteTask(taskId);
+
+        return "redirect:/seeAllTasks";
+    }
+
+
 }
