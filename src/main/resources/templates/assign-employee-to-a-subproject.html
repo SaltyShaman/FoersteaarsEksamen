@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Tilføj folk til et subprojekt</title>
+</head>
+<body>
+<h1>Tilføj folk til et subprojekt</h1>
+<form action="/subprojectsEmployeeAssignPost" method="post">
+  <label for="employee">Vælg den ansatte:</label>
+  <select name="employeeId" id="employee" required>
+    <option value="" disabled selected>Vælg den ansatte</option>
+    <option th:each="employee : ${employees}"
+            th:value="${employee.employeeId}"
+            th:text="${employee.employeeName}">
+    </option>
+  </select>
+  <label for="subproject">Vælg subprojekt:</label>
+  <select name="subprojectId" id="subproject" required>
+    <option value="" disabled selected>Vælg subprojekt</option>
+    <option th:each="subproject : ${subprojects}"
+            th:value="${subproject.subprojectId}"
+            th:text="${subproject.subprojectName}">
+    </option>
+  </select>
+
+  <button type="submit">Assign</button>
+</form>
+
+
+<form action="/selectAllEmployees" method="get">
+  <button type="submit" class="btn btn-primary">Se overblik over Medarbejdere</button>
+</form>
+</body>
+</html>
