@@ -20,10 +20,10 @@
 
 <h2>Subprojekter</h2>
 <ul>
-    <li th:each="subproject : ${subprojects}">
-        <strong th:text="${subproject.subprojectName}"></strong>
+    <li th:each="entry : ${subprojects}">
+        <strong th:text="${entry.key.subprojectName}"></strong>
         <ul>
-            <li th:each="employee : ${subproject.employees}">
+            <li th:each="employee : ${entry.value}">
                 Medarbejder: <span th:text="${employee.employeeName}"></span>
             </li>
         </ul>

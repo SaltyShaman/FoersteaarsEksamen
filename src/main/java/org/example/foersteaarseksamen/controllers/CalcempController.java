@@ -5,6 +5,7 @@ import org.example.foersteaarseksamen.models.Calculator;
 import org.example.foersteaarseksamen.models.Employee;
 import org.example.foersteaarseksamen.services.CalcempService;
 import org.example.foersteaarseksamen.services.CalculatorService;
+import org.example.foersteaarseksamen.services.SubprojectService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +18,11 @@ import java.util.List;
 public class CalcempController {
 
     private final CalcempService calcempService;
+    private final SubprojectService subprojectService;
 
-    public CalcempController(CalcempService calcempService) {
+    public CalcempController(CalcempService calcempService, SubprojectService subprojectService) {
         this.calcempService = calcempService;
+        this.subprojectService = subprojectService;
     }
 
 
@@ -38,6 +41,13 @@ public class CalcempController {
     @GetMapping("/getCalculatorDataDisplay")
     public String getCalculatorDataDisplay(Model model, @RequestParam String calculatorName) {
         model.addAttribute("calcEmp", calcempService.getCalcEmpDetails(calculatorName));
+
+        model.addAttribute("subprojects", subprojectService.findSubprojectsWithEmployees(calculatorName));
+
+       //subprojects is work in progress
+        /*
+        model.addAttribute("subprojects", subprojectService.findSubprojectsByCalculatorName(calculatorName));
+        */
         return "calculator-tool";
     }
 
