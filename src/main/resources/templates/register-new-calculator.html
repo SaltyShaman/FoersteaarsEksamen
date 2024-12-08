@@ -3,54 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Register New Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
 </head>
+<style>
+    h1 {
+        font-size: 2.5rem;
+        color: #ff6f00;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .card {
+        max-width: 600px; /* Adjust the width */
+        margin: 0 auto; /* Center the card horizontally */
+    }
+
+    .btn-group {
+        gap: 10px; /* Add space between buttons */
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+</style>
 <body>
-<h1>Ny Project Estimering</h1>
+<h1>Nyt Projekt Værktøj</h1>
 
-<h2>Opret nyt lommeregner ID med brug af eksisterende projekter og klienter</h2>
 
-<!-- Main form for creating a new calculator -->
-<form action="/createCalculatorPost" method="post">
-    <div>
-        <label for="calculatorName">Lommeregner navn:</label>
-        <input type="text" id="calculatorName" name="calculatorName" required>
-    </div>
 
-    <div>
+<div class="container mt-5">
 
-            <label for="clientCompany">Se klient firmaer:</label>
-            <select name="client_id" id="clientCompany">
-                <option value="" disabled selected>Vælg firma</option>
-                <option th:each="client : ${clients}"
-                        th:value="${client.client_id}"
-                        th:text="${client.clientCompany}">
+    <!-- Form Section -->
+<section class="card shadow-sm p-4 mb-5">
+    <!-- Main form for creating a new calculator -->
+    <form action="/createCalculatorPost" method="post">
+        <div class="mb-3">
+            <label for="calculatorName" class="form-label">Projekt Værktøj Navn:</label>
+            <input type="text" id="calculatorName" class="form-control" name="calculatorName" required>
+        </div>
+        <div class="mb-3">
+                <label for="clientCompany" class="form-label">Firma:</label>
+                <select name="client_id" id="clientCompany" class="form-control" >
+                    <option value="" disabled selected>Vælg firma</option>
+                    <option th:each="client : ${clients}"
+                            th:value="${client.client_id}"
+                            th:text="${client.clientCompany}">
+                    </option>
+                </select>
+        </div>
+        <div class="mb-3">
+            <label for="projectName" class="form-label">Projekt</label>
+            <select name="projectManagementId" id="projectName" class="form-control" >
+                <option value="" disabled selected>Se projekter</option>
+                <option th:each="projectManagement : ${projects}"
+                        th:value="${projectManagement.projectManagementId}"
+                        th:text="${projectManagement.projectName}">
                 </option>
             </select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary w-100">Tilføj Projekt Værktøj</button>
+        </div>
+    </form>
 
-    </div>
+        <!-- Button to return to the index -->
+        <form action="/" method="get">
+            <button type="submit" class="btn btn-secondary w-100">Gå til indeks</button>
+        </form>
 
-    <div>
-
-        <label for="projectName">Vælg projekt</label>
-        <select name="projectManagementId" id="projectName">
-            <option value="" disabled selected>Se projekter</option>
-            <option th:each="projectManagement : ${projects}"
-                    th:value="${projectManagement.projectManagementId}"
-                    th:text="${projectManagement.projectName}">
-            </option>
-        </select>
-
-    </div>
+        <footer>
+            <p>&copy; 2024 Projekt Kalkulerings Værktøj</p>
+        </footer>
+</section>
 
 
-    <div>
-        <button type="submit">Tilføj</button>
-    </div>
-</form>
-
-<!-- Button to return to the index -->
-<form action="/" method="get">
-    <button type="submit">Indeks</button>
-</form>
 </body>
 </html>
