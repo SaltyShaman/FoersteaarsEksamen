@@ -17,9 +17,11 @@ import java.util.Map;
 public class SubprojectService {
 
     private final SubprojectRepository subprojectRepository;
+    private final TaskRepository taskRepository;
 
-    public SubprojectService(SubprojectRepository subprojectRepository) {
+    public SubprojectService(SubprojectRepository subprojectRepository, TaskRepository taskRepository) {
         this.subprojectRepository = subprojectRepository;
+        this.taskRepository = taskRepository;
     }
 
     public List<Subproject> findAllSubprojects(){
@@ -27,7 +29,6 @@ public class SubprojectService {
     }
 
     public void assignEmployeeToSubproject(Integer employeeId, Integer subprojectId) {
-        // Call the repository method to handle the database insertion
         subprojectRepository.assignEmployeeToSubproject(employeeId, subprojectId);
     }
 
@@ -35,6 +36,7 @@ public class SubprojectService {
         return subprojectRepository.findSubprojectsByCalculatorName(calculatorName);
     }
 
+    //Made with ChatGPT 8 december
     public Map<Subproject, List<Employee>> findSubprojectsWithEmployees(String calculatorName) {
         // Fetch the list of subprojects associated with the calculator
         List<Subproject> subprojects = subprojectRepository.findSubprojectsByCalculatorName(calculatorName);
@@ -43,11 +45,19 @@ public class SubprojectService {
         Map<Subproject, List<Employee>> subprojectsWithEmployees = new LinkedHashMap<>();
 
         for (Subproject subproject : subprojects) {
+            // Fetch employees assigned to the subproject
             List<Employee> employees = subprojectRepository.findEmployeesBySubprojectId(subproject.getSubprojectId());
+
+            // Populate tasks for each employee
+            for (Employee employee : employees) {
+                employee.setTasks(taskRepository.findTasksByEmployeeId(employee.getEmployeeId()));
+            }
+
             subprojectsWithEmployees.put(subproject, employees);
         }
 
         return subprojectsWithEmployees;
     }
+
 
 }
