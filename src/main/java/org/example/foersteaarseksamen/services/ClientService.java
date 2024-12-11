@@ -21,14 +21,7 @@ public class ClientService {
     public void addClient(String clientCompany, String clientEmail, String clientName) {
         clientRepository.addClient(clientCompany, clientEmail, clientName);
     }
-/*
-    public Client showClient(String clientEmail) {
-        if (clientEmail == null || clientEmail.isEmpty()) { // error handling in case say typo of empty table
-            throw new IllegalArgumentException("client email name cannot be null or empty");
-        }
-        return clientRepository.showClient(clientEmail);
-    }
-*/
+
     public List<Client> showAllClients() {
         return clientRepository.showAllClients();
     }

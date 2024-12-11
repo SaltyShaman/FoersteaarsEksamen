@@ -102,7 +102,7 @@ public class CalcempRepository {
 
 
 
-
+    //basic collector method by KSG
     public Calcemp getCalcEmpDetails(String calculatorName) {
         // Fetch client and project data
         Calcemp calcEmp = getClientAndProjectData(calculatorName);
@@ -114,6 +114,8 @@ public class CalcempRepository {
         return calcEmp;
     }
 
+
+    //KSG
     public void attachEmployeeToCalculatorTableId(int employeeId, int calculatorTableId) {
         String query = "UPDATE employee_table SET calculator_table_id = ? WHERE employee_id = ?";
         jdbcTemplate.update(query, calculatorTableId, employeeId); // Corrected parameter order

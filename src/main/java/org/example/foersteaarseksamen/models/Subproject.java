@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Subproject {
 
+    //common created
+
     private Integer subprojectId; //PRIMARY KEY
     private String subprojectName;
     private Integer projectManagementId; // FOREIGN KEY LINKS TO TOOL

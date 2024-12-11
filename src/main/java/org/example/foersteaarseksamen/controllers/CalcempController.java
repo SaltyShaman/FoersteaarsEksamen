@@ -42,14 +42,8 @@ public class CalcempController {
     public String getCalculatorDataDisplay(Model model, @RequestParam String calculatorName) {
         model.addAttribute("calcEmp", calcempService.getCalcEmpDetails(calculatorName));
 
-
-        //subporjects mangler at tilføje employee tasks
         model.addAttribute("subprojects", subprojectService.findSubprojectsWithEmployees(calculatorName));
 
-        //subprojects is work in progress
-        /*
-        model.addAttribute("subprojects", subprojectService.findSubprojectsByCalculatorName(calculatorName));
-        */
         return "calculator-tool";
     }
 

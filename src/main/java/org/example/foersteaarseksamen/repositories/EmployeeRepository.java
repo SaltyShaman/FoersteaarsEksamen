@@ -30,6 +30,7 @@ public class EmployeeRepository {
         jdbcTemplate.update(query, employeeName, calculatorTableId);
     }
 
+    //KSG with aid from ChatGPT
     public List<Employee> ReadAllEmployees() {
         // Corrected SQL query to retrieve data from the database
         String query = """
@@ -62,6 +63,7 @@ public class EmployeeRepository {
         return new ArrayList<>(employeeMap.values());
     }
 
+    //KSG with aid from ChatGPT
     private List<Map<String, Object>> fetchEmployeeData(String query) {
         try {
             // Using jdbcTemplate to fetch data from the database
@@ -72,6 +74,7 @@ public class EmployeeRepository {
         }
     }
 
+    //Chat GPT, debugged SQL table names and variables commonly
     private Map<Integer, Employee> processEmployeeData(List<Map<String, Object>> rows) {
         Map<Integer, Employee> employeeMap = new HashMap<>();
 
