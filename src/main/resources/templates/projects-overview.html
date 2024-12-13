@@ -110,15 +110,7 @@
                 <tr th:each="project : ${projectManagements}">
                     <td th:text="${project.projectName}"></td>
                     <td th:text="${project.projectLeader}"></td>
-                    <td>
-                    <td>
-                        <form action="/getCalculatorData" method="post">
-                            <input type="hidden" name="calculatorName" th:value="${project.projectName}"> <!-- Assuming the project name is used as the calculator name -->
-                            <button type="submit" class="btn btn-outline-primary">Se Detaljer</button>
-                        </form>
-                    </td>
 
-                    </td>
                     <td>
                         <form action="/updateProject" method="get">
                             <input type="hidden" name="projectManagementId" th:value="${project.projectManagementId}">

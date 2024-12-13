@@ -4,6 +4,77 @@
     <meta charset="UTF-8">
     <title>Calculator Tool for Project Leader</title>
     <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5faff; /* Light blue background */
+            color: #333; /* Neutral text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #0056b3; /* Dark blue headings */
+            text-align: center;
+        }
+
+        h1 {
+            border-bottom: 3px solid #ff9800; /* Orange underline for h1 */
+            padding-bottom: 10px;
+        }
+
+        p, ul {
+            margin: 10px 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul > li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #0056b3; /* Blue border */
+            border-radius: 5px;
+            background-color: #e8f4ff; /* Lighter blue */
+        }
+
+        ul ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        ul ul li {
+            border: none;
+            background-color: #ffffff; /* White for nested items */
+        }
+
+        span {
+            font-weight: bold;
+            color: #ff9800; /* Orange for emphasized text */
+        }
+
+        button {
+            background-color: #0056b3; /* Blue button background */
+            color: #fff; /* White text */
+            border: none;
+            padding: 10px 15px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #ff9800; /* Orange on hover */
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 <h1>Detaljer for Kalkulator</h1>
@@ -24,18 +95,16 @@
             <li th:each="employee : ${entry.value}">
                 Medarbejder: <span th:text="${employee.employeeName}"></span>
 
-        Opgaver:
-        <ul>
-            <li th:each="task : ${employee.tasks}">
-                <span th:text="${task.taskName}"></span> (Tid: <span th:text="${task.estimatedWorkHoursPerTask}"></span> timer)
-            </li>
-        </ul>
-
+                Opgaver:
+                <ul>
+                    <li th:each="task : ${employee.tasks}">
+                        <span th:text="${task.taskName}"></span> (Tid: <span th:text="${task.estimatedWorkHoursPerTask}"></span> timer)
+                    </li>
+                </ul>
             </li>
         </ul>
     </li>
 </ul>
-
 
 <h2>Medarbejdere</h2>
 <ul>
@@ -50,23 +119,21 @@
     </li>
 </ul>
 
-
-<form action ="readAllCalculators" method ="get">
+<form action="readAllCalculators" method="get">
     <button type="submit">Vis beregnere</button>
 </form>
 
-<form action="attachEmployeeToForeignKey" method ="get">
+<form action="attachEmployeeToForeignKey" method="get">
     <button type="submit">Tilknyt medarbejdere til et projekt</button>
 </form>
 
-<form action="createTask" method ="get">
+<form action="createTask" method="get">
     <button type="submit">Opret opgave</button>
 </form>
 
 <form action="/" method="get">
     <button type="submit">Gå tilbage til hovedsiden</button>
 </form>
-
 
 </body>
 </html>
