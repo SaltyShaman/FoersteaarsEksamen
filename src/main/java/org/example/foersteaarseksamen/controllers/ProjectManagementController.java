@@ -40,7 +40,8 @@ public class ProjectManagementController {
     // create post is adding project_managements to the database
     //redirects to index afterwards
     @PostMapping("/createPost")
-    public String createProject(@RequestParam String projectName, @RequestParam String projectLeader) {
+    public String createProject(@RequestParam String projectName,
+                                @RequestParam String projectLeader) {
         projectManagementServices.createProjectManagement(projectName, projectLeader);
         return "redirect:/selectAllFromProjectManagement";
     }

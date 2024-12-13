@@ -6,10 +6,7 @@ import org.example.foersteaarseksamen.models.Task;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.dao.DataAccessException;
 
-
-import java.sql.SQLException;
 import java.util.*;
 
 @Repository
@@ -108,4 +105,5 @@ public class EmployeeRepository {
         return employeeMap;
 
     }
+
 }

@@ -5,8 +5,6 @@ import org.example.foersteaarseksamen.models.Employee;
 import org.example.foersteaarseksamen.models.Subproject;
 import org.example.foersteaarseksamen.repositories.SubprojectRepository;
 import org.example.foersteaarseksamen.repositories.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -58,6 +56,7 @@ public class SubprojectService {
 
         return subprojectsWithEmployees;
     }
+
 
 
 }

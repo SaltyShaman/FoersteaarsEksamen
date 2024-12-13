@@ -23,8 +23,6 @@ public class CalcempService {
         return calcempRepository.findAllCalculators();
     }
 
-
-
     public Calcemp getCalcEmpDetails(String calculatorName) {
         return calcempRepository.getCalcEmpDetails(calculatorName);
     }

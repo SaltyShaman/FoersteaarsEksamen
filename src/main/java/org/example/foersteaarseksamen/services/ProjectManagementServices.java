@@ -23,9 +23,6 @@ public class ProjectManagementServices {
         projectManagementRepository.deleteProjectManagement(projectManagementId);
     }
 
-
-
-
     public void updateProjectManagement(String projectName, String projectLeader, String oldProjectName) {
         projectManagementRepository.updateProjectManagement(projectName, projectLeader, oldProjectName);
     }

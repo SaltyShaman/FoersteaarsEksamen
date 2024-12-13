@@ -30,18 +30,7 @@ public class ClientRepository {
         RowMapper rowMapper1 = new BeanPropertyRowMapper(Client.class);
         return jdbcTemplate.query(query, rowMapper1);
     }
-    /*
-    //Read one client- Don't know if this method is necessary.
-    public Client showClient(String clientEmail) {
-        String query = "SELECT * FROM client WHERE client_email = ?";
-        try {
-            return jdbcTemplate.queryForObject(query, rowMapper, clientEmail);
-        } catch (EmptyResultDataAccessException e) {
-            return null; // return null if no project found
-        }
 
-    }
-*/
     //Update client
     public void updateClient(String clientCompany, String clientName, String clientEmail, String oldClientEmail) {
         String query = "UPDATE `client` SET client_company = ?, client_name = ?, client_email = ? WHERE client_email = ?";

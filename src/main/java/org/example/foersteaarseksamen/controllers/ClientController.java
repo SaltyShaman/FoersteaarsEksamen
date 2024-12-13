@@ -24,7 +24,9 @@ public class ClientController {
     }
 
     @PostMapping("/addClient")
-    public String addClient(@RequestParam String clientCompany, @RequestParam String clientEmail,@RequestParam String clientName) {
+    public String addClient(@RequestParam String clientCompany,
+                            @RequestParam String clientEmail,
+                            @RequestParam String clientName) {
        clientService.addClient(clientCompany, clientEmail, clientName);
        return "redirect:/selectAllClients";
     }
