@@ -2,54 +2,114 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/projects.css}">
+    <style>
+        /* Global Page Styling */
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff6f00;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+        }
+
+        table {
+            margin-top: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+    </style>
 </head>
 <body>
+<header>
+    <h1>Projekt overblik</h1>
+</header>
+<main>
+    <div class="container mt-5">
 
-<div class="table-responsive">
-    <table>
-        <tr>
-            <th>Navn på den ansatte</th>
-            <th>Opgaver</th>
-            <th>Tilknyttet projekt</th>
-        </tr>
-        <tr th:each="employee : ${employees}">
-            <td th:text="${employee.employeeName}"></td>
-            <td>
-                <ul>
-                    <!-- Display tasks if they exist -->
-                    <li th:each="task : ${employee.tasks}" th:if="${employee.tasks.size() > 0}">
-                        <span th:text="${task.taskId}">Opgave ID</span> -
-                        <span th:text="${task.taskName}">Opgave navn</span> -
-                        <span th:text="${task.estimatedWorkHoursPerTask}">Formodede antal timer</span>
-                    </li>
-                    <!-- Default message if no tasks -->
-                    <li th:if="${employee.tasks.size() == 0}">Ingen opgaver</li>
-                </ul>
-            </td>
-            <td th:text="${employee.calculatorTableId}"></td>
-        </tr>
-    </table>
-</div>
-<form action="/createEmployee" method="get">
-    <button type="submit" class="btn btn-primary">Registrer ny ansat</button>
-</form>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Navn på den ansatte</th>
+                    <th>Opgaver</th>
+                    <th>Tilknyttet projekt</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.employeeName}"></td>
+                    <td>
+                        <ul>
+                            <!-- Display tasks if they exist -->
+                            <li th:each="task : ${employee.tasks}" th:if="${employee.tasks.size() > 0}">
+                                <span th:text="${task.taskId}">Opgave ID</span> -
+                                <span th:text="${task.taskName}">Opgave navn</span> -
+                                <span th:text="${task.estimatedWorkHoursPerTask}">Formodede antal timer</span>
+                            </li>
+                            <!-- Default message if no tasks -->
+                            <li th:if="${employee.tasks.size() == 0}">Ingen opgaver</li>
+                        </ul>
+                    </td>
+                    <td th:text="${employee.calculatorTableId}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <form action="/createEmployee" method="get">
+        <button type="submit" class="btn btn-primary">Registrer ny medarbejder</button>
+    </form>
 
-<form action="attachEmployeeToForeignKey" method ="get">
-    <button type="submit">Tilknyt medarbejdere til et projekt</button>
-</form>
+    <form action="attachEmployeeToForeignKey" method ="get">
+        <button type="submit" class="btn btn-primary">Tilknyt medarbejdere til et projekt</button>
+    </form>
 
-<form action="seeAllTasks" method ="get">
-    <button type="submit">Se alle opgaver</button>
-</form>
+    <form action="seeAllTasks" method ="get">
+        <button type="submit" class="btn btn-primary">Se alle opgaver</button>
+    </form>
 
-<form action="createTask" method ="get">
-    <button type="submit">Opret opgave</button>
-</form>
+    <form action="createTask" method ="get">
+        <button type="submit" class="btn btn-primary">Opret opgave</button>
+    </form>
 
-<form action="/" method="get">
-    <button type="submit">Indeks</button>
-</form>
+    <form action="/" method="get">
+        <button type="submit" class="btn btn-secondary w-100">Indeks</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2024 Projekt Kalkulerings System</p>
+</footer>
 
 </body>
 </html>
