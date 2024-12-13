@@ -22,6 +22,7 @@ public class EmployeetasksRepository {
         jdbcTemplate.update(query, employeeId, taskId);
     }
 
+    //KSG
     public List<Employee> findAllEmployees() {
         String query = "SELECT * FROM employee_table";
         return jdbcTemplate.query(query, (rs, rowNum) -> {
@@ -32,6 +33,7 @@ public class EmployeetasksRepository {
         });
     }
 
+    //KSG
     public List<Task> findAllTasks() {
         String query = "SELECT * FROM tasks";
         return jdbcTemplate.query(query, (rs, rowNum) -> {

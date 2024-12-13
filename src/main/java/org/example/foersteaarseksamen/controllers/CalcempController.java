@@ -44,10 +44,6 @@ public class CalcempController {
 
         model.addAttribute("subprojects", subprojectService.findSubprojectsWithEmployees(calculatorName));
 
-       //subprojects is work in progress
-        /*
-        model.addAttribute("subprojects", subprojectService.findSubprojectsByCalculatorName(calculatorName));
-        */
         return "calculator-tool";
     }
 

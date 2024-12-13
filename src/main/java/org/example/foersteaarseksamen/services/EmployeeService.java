@@ -17,11 +17,6 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    /*
-    read all
-    read specific
-     */
-
     public void createEmployee(String employeeName, Integer calculatorTableId) {
         employeeRepository.CreateEmployee(employeeName, calculatorTableId);
     }
@@ -29,10 +24,5 @@ public class EmployeeService {
     public List<Employee> ReadAllEmployees() {
         return employeeRepository.ReadAllEmployees();
     }
-
-
-
-
-
 
 }

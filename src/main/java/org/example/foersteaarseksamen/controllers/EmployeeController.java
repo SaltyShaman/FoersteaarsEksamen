@@ -23,21 +23,13 @@ public class EmployeeController {
     public String createEmployee(Model model) {
         return "create-employee";
     }
-    /*
-//to-do: redirect into the calculator page
-         read specific employee
-     */
+
+    //KSG, required = false aquired from ChatGPT
     @PostMapping("/createEmployeePost")
     public String createEmployee(@RequestParam String employeeName,
                                  @RequestParam(required = false) Integer calculatorTableId) {
         employeeService.createEmployee(employeeName,  calculatorTableId);
         return "redirect:/selectAllEmployees";
-    }
-
-
-    @GetMapping("/calculator")
-    public String calculator(Model model) {
-        return "calculator-tool";
     }
 
 

@@ -18,6 +18,8 @@ public class SubprojectRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+
+    //common with help from ChatGPT
     public List<Subproject> findAllSubprojects() {
         // SQL query to fetch all subprojects
         String query = "SELECT * FROM subprojects";
@@ -33,11 +35,14 @@ public class SubprojectRepository {
         });
     }
 
+
+    //made by KSG
     public void assignEmployeeToSubproject(Integer employeeId, Integer subprojectId) {
         String query = "INSERT INTO employee_subprojects (employee_id, subproject_id) VALUES (?, ?)";
         jdbcTemplate.update(query, employeeId, subprojectId);
     }
 
+    //KSG
     public List<Subproject> findSubprojectsByCalculatorName(String calculatorName) {
         String query = """
             SELECT sp.subproject_id, sp.subproject_name, sp.project_management_id
@@ -54,6 +59,7 @@ public class SubprojectRepository {
         ), calculatorName);
     }
 
+    //KSG
     public List<Employee> findEmployeesBySubprojectId(Integer subprojectId) {
         // SQL query to join employee_subprojects and employees tables
         String query = """

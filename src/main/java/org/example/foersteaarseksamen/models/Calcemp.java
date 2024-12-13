@@ -8,6 +8,9 @@ public class Calcemp {
     private List <Employee> employees;
 
 
+    //Subprojects is retrieved through a join statements.
+    //version 2 goals: redesign til include more IDs as objects.
+
     // Client variables
     private String clientCompany;
     private String clientName;

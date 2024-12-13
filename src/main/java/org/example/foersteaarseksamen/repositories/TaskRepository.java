@@ -26,7 +26,7 @@ public class TaskRepository {
         jdbcTemplate.update(query, taskName, estimatedWorkHoursPerTask);
     }
 
-    //without seeing attached employees
+    //without seeing attached employees ChatGPT inspired
     public List<Task> getAllTasks() {
         String query = "SELECT tasks_id, task_name, estimated_work_hours_per_task FROM tasks";
 
@@ -48,9 +48,21 @@ public class TaskRepository {
         jdbcTemplate.update(query, taskId);
     }
 
+//KSG
+    public List<Task> findTasksByEmployeeId(int employeeId) {
+        String query = """
+        SELECT t.tasks_id, t.task_name, t.estimated_work_hours_per_task
+        FROM employee_tasks et
+        INNER JOIN tasks t ON et.tasks_id = t.tasks_id
+        WHERE et.employee_id = ?
+        """;
 
-    /*
-    mål:, delete task, tilknyt task til employee
+        return jdbcTemplate.query(query, (rs, rowNum) -> new Task(
+                rs.getInt("tasks_id"),
+                rs.getString("task_name"),
+                rs.getInt("estimated_work_hours_per_task")
+        ), employeeId);
+    }
 
-     */
+
 }
