@@ -39,7 +39,9 @@
 
     .btn {
         width: 100%;
-        margin-bottom: 1rem;
+        margin-top: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
     }
 
     footer {
@@ -63,12 +65,11 @@
             <input type="text"  name="employeeName" class="form-control" placeholder="Tilføj medarbejder navn" required>
         </div>
             <button type="submit" class="btn btn-primary">Indsend</button>
-        </form>
-
-    <form action="/selectAllEmployees" method="get">
-        <button type="submit" class="btn btn-primary">Se overblik over Medarbejdere</button>
     </form>
 
+    <form action="/selectAllEmployees" method="get">
+        <button type="submit" class="btn btn-secondary">Se overblik over Medarbejdere</button>
+    </form>
 
     <form action="/" method="get">
         <button type="submit" class="btn btn-secondary mt-3">Gå til indeks</button>

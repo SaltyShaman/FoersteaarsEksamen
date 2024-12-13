@@ -2,41 +2,91 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attach employee to project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
 </head>
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        color: #333;
+        padding: 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #ff6f00;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    main {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add shadow */
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+</style>
 <body>
 
-<h1>Tilføj en medarbejder til et projekt</h1>
+<header>
+    <h1>Tilføj en medarbejder til et projekt</h1>
+</header>
+<main>
+    <form action="/attachEmployeeToForeignKeyPost" method="post">
+        <div class="mb-4">
+            <label for="calculator" class="form-label"><strong>Vælg medarbejder</strong></label>
+            <select name="employeeId" id="employee" class="form-select">
+                <option value="" disabled selected>Vælg medarbejder</option>
+                <option th:each="employee : ${employees}"
+                        th:value="${employee.employeeId}"
+                        th:text="${employee.employeeName}">
+                </option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="calculator" class="form-label"><strong>Vælg projekt værktøj</strong></label>
+            <select name="calculatorTableId" id="calculator" class="form-select">
+                <option value="" disabled selected>Vælg projekt værktøj</option>
+                <option th:each="calculator : ${calculators}"
+                        th:value="${calculator.calculatorTableId}"
+                        th:text="${calculator.calculatorName}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary w-100">tilføj projekt værktøj</button>
+        </div>
+    </form>
 
-<form action="/attachEmployeeToForeignKeyPost" method="post">
-    <p>Vælg ansat</p>
-    <select name="employeeId" id="employee">
-        <option value="" disabled selected>Vælg medarbejder</option>
-        <option th:each="employee : ${employees}"
-                th:value="${employee.employeeId}"
-                th:text="${employee.employeeName}">
-        </option>
-    </select>
-
-    <p>Vælg projektværktøj</p>
-    <select name="calculatorTableId" id="calculator">
-        <option value="" disabled selected>Vælg projekt værktøj</option>
-        <option th:each="calculator : ${calculators}"
-                th:value="${calculator.calculatorTableId}"
-                th:text="${calculator.calculatorName}">
-        </option>
-    </select>
-
-    <button type="submit">Tilføj</button>
-</form>
-
-<form action="/selectAllEmployees" method="get">
-    <button type="submit" class="btn btn-primary">Se overblik over Medarbejdere</button>
-</form>
-
-<form action="/" method="get">
-    <button type="submit">Indeks</button>
-</form>
-
+    <form action="/selectAllEmployees" method="get">
+        <button type="submit" class="btn btn-primary w-100">Se overblik over Medarbejdere</button>
+    </form>
+    <form action="/" method="get">
+        <button type="submit" class="btn btn-secondary w-100">Indeks</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2024 Projekt Kalkulerings Værktøj</p>
+</footer>
 </body>
 </html>
