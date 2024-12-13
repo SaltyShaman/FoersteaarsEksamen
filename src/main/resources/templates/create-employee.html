@@ -33,6 +33,10 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    .form-label {
+        font-weight: bold;
+    }
+
     .btn {
         width: 100%;
         margin-bottom: 1rem;
@@ -47,22 +51,31 @@
 </style>
 </head>
 
-<H1>Register new Employee to the project</H1>
+<H1>Tilføj ny medarbejder til projektet</H1>
 <div th:if="${message}">
     <p th:text="${message}" style="color:green;"></p>
 </div>
 
-<form action="/createEmployeePost" method = "post">
+<main>
+    <form action="/createEmployeePost" method = "post">
+        <div class="mb-3">
+            <label  class="form-label">Medarbejder navn</label>
+            <input type="text"  name="employeeName" class="form-control" placeholder="Tilføj medarbejder navn" required>
+        </div>
+            <button type="submit" class="btn btn-primary">Indsend</button>
+        </form>
 
-    <label>Ansattes navn</label>
-    <input type="text" name="employeeName" /><br>
-    <button type="submit">Submit</button>
+    <form action="/selectAllEmployees" method="get">
+        <button type="submit" class="btn btn-primary">Se overblik over Medarbejdere</button>
+    </form>
 
-</form>
 
-<form action="/selectAllEmployees" method="get">
-    <button type="submit" class="btn btn-primary">Se overblik over Medarbejdere</button>
-</form>
-
+    <form action="/" method="get">
+        <button type="submit" class="btn btn-secondary mt-3">Gå til indeks</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2024 Projekt Kalkulerings System</p>
+</footer>
 </body>
 </html>
