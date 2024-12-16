@@ -105,19 +105,6 @@
     </li>
 </ul>
 
-<h2>Medarbejdere</h2>
-<ul>
-    <li th:each="employee : ${calcEmp.employees}">
-        Navn: <span th:text="${employee.employeeName}"></span>,
-        Opgaver:
-        <ul>
-            <li th:each="task : ${employee.tasks}">
-                <span th:text="${task.taskName}"></span> (Tid: <span th:text="${task.estimatedWorkHoursPerTask}"></span> timer)
-            </li>
-        </ul>
-    </li>
-</ul>
-
 <form action="readAllCalculators" method="get">
     <button type="submit">Vis beregnere</button>
 </form>
