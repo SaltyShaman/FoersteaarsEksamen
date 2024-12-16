@@ -49,7 +49,7 @@ them being part of the subproject.
 
 ## Database Schema
 ### ER Diagram
-(Include your ER diagram image here)
+![title](images/ERDiagram.png)
 ### Tables
 
 1. **Calculator Employee Table**
